@@ -56,7 +56,8 @@ class Mission
 		"A3_Structures_F_Mil_Flags",
 		"A3_Structures_F_Ind_AirPort",
 		"A3_Air_F_Heli_Light_01",
-		"A3_Structures_F_Mil_Barracks"
+		"A3_Structures_F_Mil_Barracks",
+		"A3_Structures_F_Heli_Items_Airport"
 	};
 	addOnsAuto[]=
 	{
@@ -102,6 +103,7 @@ class Mission
 		"A3_Structures_F_Ind_AirPort",
 		"A3_Structures_F_Mil_Cargo",
 		"A3_Structures_F_Mil_Barracks",
+		"A3_Structures_F_Heli_Items_Airport",
 		"a3_map_altis"
 	};
 	randomSeed=2004553;
@@ -2693,8 +2695,8 @@ class Mission
 				};
 				class Item49
 				{
-					position[]={3240.3093,2.137604,12953.059};
-					azimut=86.662399;
+					position[]={3236.3037,2.0877862,12944.806};
+					azimut=181.35208;
 					special="NONE";
 					id=146;
 					side="WEST";
@@ -3497,7 +3499,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=523;
+		items=541;
 		class Item0
 		{
 			position[]={8065.1616,35.674362,24985.314};
@@ -9109,6 +9111,175 @@ class Mission
 			skill=0.60000002;
 			init=" this allowDamage false;";
 		};
+		class Item523
+		{
+			position[]={14135,0,16279.7};
+			azimut=174.045;
+			id=736;
+			side="EMPTY";
+			vehicle="Land_LampHalogen_F";
+			skill=0.60000002;
+		};
+		class Item524
+		{
+			position[]={14178.6,0.61754602,16331.8};
+			offsetY=0.61754203;
+			id=737;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item525
+		{
+			position[]={14197.2,0.63656998,16245.2};
+			offsetY=0.63656998;
+			id=738;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item526
+		{
+			position[]={14251.7,0,16303.1};
+			azimut=97.449699;
+			id=739;
+			side="EMPTY";
+			vehicle="Land_LampHarbour_F";
+			skill=0.60000002;
+		};
+		class Item527
+		{
+			position[]={14677.9,0,16776.9};
+			azimut=132.82899;
+			offsetY=0.30586201;
+			id=740;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item528
+		{
+			position[]={14624.7,0,16782.199};
+			id=741;
+			side="EMPTY";
+			vehicle="Land_LampDecor_F";
+			skill=0.60000002;
+		};
+		class Item529
+		{
+			position[]={3197.2026,2,12902.512};
+			id=742;
+			side="EMPTY";
+			vehicle="Land_HelipadCircle_F";
+			skill=0.60000002;
+		};
+		class Item530
+		{
+			position[]={3633.23,0,13092.8};
+			azimut=156.806;
+			offsetY=0.165038;
+			id=743;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item531
+		{
+			position[]={3755.79,0.327517,13290.9};
+			offsetY=0.327517;
+			id=744;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item532
+		{
+			position[]={3197.2422,2,12902.59};
+			azimut=359.966;
+			offsetY=7.5817101e-005;
+			id=745;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_blue_F";
+			skill=0.60000002;
+		};
+		class Item533
+		{
+			position[]={3228.2068,2.0538592,12942.397};
+			azimut=359.93799;
+			offsetY=4.6491601e-005;
+			id=746;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_blue_F";
+			skill=0.60000002;
+		};
+		class Item534
+		{
+			position[]={3358.05,3.4274299,12965.8};
+			azimut=177.60699;
+			offsetY=3.4273801;
+			id=747;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_blue_F";
+			skill=0.60000002;
+		};
+		class Item535
+		{
+			position[]={3350.28,3.4528501,12971.5};
+			azimut=207.004;
+			offsetY=3.45276;
+			id=748;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_blue_F";
+			skill=0.60000002;
+		};
+		class Item536
+		{
+			position[]={14259.6,-0.070066497,16307.9};
+			azimut=156.827;
+			offsetY=8.1779003;
+			id=749;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_yellow_F";
+			skill=0.60000002;
+		};
+		class Item537
+		{
+			position[]={13817.8,0,18939.801};
+			offsetY=-1.90735e-006;
+			id=750;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
+		class Item538
+		{
+			position[]={13772.2,0,18936.9};
+			azimut=359.939;
+			offsetY=-1.90735e-006;
+			id=751;
+			side="EMPTY";
+			vehicle="Land_HelipadCircle_F";
+			skill=0.60000002;
+		};
+		class Item539
+		{
+			position[]={13772.2,0.00062751799,18936.9};
+			azimut=0.176083;
+			offsetY=0.000303268;
+			id=752;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_blue_F";
+			skill=0.60000002;
+		};
+		class Item540
+		{
+			position[]={13828.5,0.053211201,18994.9};
+			offsetY=0.053209301;
+			id=753;
+			side="EMPTY";
+			vehicle="Land_LampAirport_F";
+			skill=0.60000002;
+		};
 	};
 	class Markers
 	{
@@ -9895,10 +10066,10 @@ class Mission
 		};
 		class Item99
 		{
-			position[]={3244.9341,2.1102631,12960.808};
+			position[]={3228.21,2.0536115,12942.378};
 			name="cop_car_1";
 			type="Empty";
-			angle=-181.36848;
+			angle=-258.11053;
 		};
 		class Item100
 		{
@@ -9923,7 +10094,7 @@ class Mission
 		};
 		class Item103
 		{
-			position[]={3194.3025,2,12897.396};
+			position[]={3197.1694,2,12902.504};
 			name="cop_air_1";
 			type="Empty";
 			angle=-174.51483;
