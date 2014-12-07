@@ -9,14 +9,15 @@
 private["_unit","_pos","_weapon","_killer","_killerpos"];
 disableSerialization;
 _unit = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
-_pos = getPos _unit;
-_weapon = typeOf currentWeapon _killer;
 _killer = [_this,1,ObjNull,[ObjNull]] call BIS_fnc_param;
+
+_pos = getPos _unit;
 _killerpos = getPos _killer;
+_weapon = currentWeapon _killer;
 
 //Clueless - Zac
 //LOG KILL.  Dead,PosX,PosY,Killer,PosX,PosY,Weapon
-diag_log format ["KILL_OCCURRED: %1,%2,%3,%4,%5,%6,%7",_unit,_pos select 0, _pos select 1, _killer, _killerpos select 0, _killerpos select 1, _weapon];
+diag_log format ["KILL_OCCURRED: %1,%2,%3,%4,%5,%6,%7",_unit, _pos select 0, _pos select 1, _killer, _killerpos select 0, _killerpos select 1, _weapon];
 
 //Set some vars
 _unit setVariable["Revive",FALSE,TRUE]; //Set the corpse to a revivable state.
