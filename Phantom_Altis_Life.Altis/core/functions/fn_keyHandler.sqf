@@ -251,6 +251,16 @@ switch (_code) do
 			};
 		};
 	};
+	//Clueless - Zac
+	//Cops open gates with O
+	case 24: {
+		if (playerSide == west ) {
+			//OPENS TWO NEAREST GATES WITHIN 20M
+			_NearestGates = nearestObjects [player, ["Land_BarGate_F"],20];
+			_NearestGates select 0 animate ["Door_1_rot", if (_NearestGates select 0 animationphase "Door_1_rot" ==0) then {1} else {0}];
+			_NearestGates select 1 animate ["Door_1_rot", if (_NearestGates select 1 animationphase "Door_1_rot" ==0) then {1} else {0}];
+		};
+	};
 };
 
 _handled;
