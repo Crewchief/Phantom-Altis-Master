@@ -44,6 +44,11 @@ switch (_filter) do
 		{
 			_ret pushBack ["H_MilCap_mcamo",nil,100];
 		};
+		
+		if(__GETC__(life_coplevel) > 3) then
+		{
+			_ret pushBack ["H_CrewHelmetHeli_B","Gas Mask",100];
+		};
 	};
 	
 	//Glasses

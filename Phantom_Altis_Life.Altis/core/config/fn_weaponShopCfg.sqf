@@ -113,6 +113,7 @@ switch(_shop) do
 						["FirstAidKit",nil,150],
 						["NVGoggles",nil,2000],
 						["MineDetector",nil,1000],
+						["SmokeShellBlue","Tear Gas",5000],
 						["B_UavTerminal",nil,5000]
 					]
 				];
@@ -146,6 +147,7 @@ switch(_shop) do
 						["FirstAidKit",nil,150],
 						["NVGoggles",nil,2000],
 						["MineDetector",nil,1000],
+						["SmokeShellBlue","Tear Gas",5000],
 						["B_UavTerminal",nil,5000]
 					]
 				];
@@ -205,6 +207,7 @@ switch(_shop) do
 						["NVGoggles",nil,2000],
 						["NVGoggles_OPFOR","SWAT NV's",1000],
 						["MineDetector",nil,1000],
+						["SmokeShellBlue","Tear Gas",5000],
 						["B_UavTerminal",nil,5000]
 					]
 				];
@@ -264,6 +267,7 @@ switch(_shop) do
 						["NVGoggles",nil,2000],
 						["NVGoggles_OPFOR","SWAT NV's",1000],
 						["MineDetector",nil,1000],
+						["SmokeShellBlue","Tear Gas",5000],
 						["B_UavTerminal",nil,5000]
 					]
 				];
@@ -334,6 +338,7 @@ switch(_shop) do
 						["NVGoggles",nil,2000],
 						["NVGoggles_OPFOR","SWAT NV's",1000],
 						["MineDetector",nil,1000],
+						["SmokeShellBlue","Tear Gas",5000],
 						["B_UavTerminal",nil,5000]
 					]
 				];
