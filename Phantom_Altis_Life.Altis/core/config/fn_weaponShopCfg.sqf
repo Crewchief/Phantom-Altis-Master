@@ -24,19 +24,21 @@ switch(_shop) do
 	{
 		switch(true) do
 		{
-			//At least Public 0
-			if (__GETC__(life_coplevel) >= 0 ) then	{
-				_items = [
-						["CADET =======",nil,0],
-						["hgun_P07_snds_F","Taser Pistol",2000],
-						["16Rnd_9x21_Mag","Taser Pistol Magazine",50],
-						["arifle_sdar_F","Taser Rifle",10000],
-						["20Rnd_556x45_UW_mag","Taser Rifle Magazine",125],
-						["muzzle_snds_L",nil,650],
+			case (playerSide != west): {"You are not a cop!"};
+			default
+			{
+				["Altis Cop Shop",
+					[
+						["arifle_sdar_F","Taser Rifle",20000],
+						["hgun_P07_snds_F","Stun Pistol",2000],
+						["hgun_P07_F",nil,7500],
+						["HandGrenade_Stone","Flashbang",1700],
+						["Binocular",nil,150],
 						["ItemGPS",nil,100],
 						["ToolKit",nil,250],
-						["MediKit",nil,5000],
+						["muzzle_snds_L",nil,650],
 						["FirstAidKit",nil,150],
+<<<<<<< HEAD
 						["NVGoggles",nil,2000]
 					];
 			};
@@ -133,6 +135,15 @@ switch(_shop) do
 					];
 			};
 			return ["APD Armory", _items];
+=======
+						["Medikit",nil,1000],
+						["NVGoggles",nil,2000],
+						["16Rnd_9x21_Mag",nil,50],
+						["20Rnd_556x45_UW_mag","Taser Rifle Magazine",125]
+					]
+				];
+			};
+>>>>>>> parent of dbf2d71... Cop Shop 1st Iteration
 		};
 	};
 	
@@ -151,6 +162,57 @@ switch(_shop) do
 						["Medikit",nil,500],
 						["NVGoggles",nil,1200],
 						["B_FieldPack_ocamo",nil,3000]
+					]
+				];
+			};
+		};
+	};
+
+	case "cop_patrol":
+	{
+		switch(true) do
+		{
+			case (playerSide != west): {"You are not a cop!"};
+			case (__GETC__(life_coplevel) < 2): {"You are not at a patrol officer rank!"};
+			default
+			{
+				["Altis Patrol Officer Shop",
+					[
+						["arifle_MX_F",nil,35000],
+						["SMG_02_ACO_F",nil,30000],
+						["HandGrenade_Stone","Flashbang",1700],
+						["MineDetector",nil,1000],
+						["acc_flashlight",nil,750],
+						["optic_Holosight",nil,1200],
+						["optic_Arco",nil,2500],
+						["muzzle_snds_H",nil,2750],
+						["30Rnd_65x39_caseless_mag",nil,130],
+						["30Rnd_9x21_Mag",nil,250]
+					]
+				];
+			};
+		};
+	};
+
+	case "cop_sergeant":
+	{
+		switch(true) do
+		{
+			case (playerSide != west): {"You are not a cop!"};
+			case (__GETC__(life_coplevel) < 3): {"You are not at a sergeant rank!"};
+			default
+			{
+				["Altis Sergeant Officer Shop",
+					[
+						["SMG_02_ACO_F",nil,15000],
+						["hgun_ACPC2_F",nil,17500],
+						["HandGrenade_Stone","Flashbang",1700],
+						["arifle_MXC_F",nil,30000],
+						["optic_Arco",nil,2500],
+						["muzzle_snds_H",nil,2750],
+						["30Rnd_65x39_caseless_mag",nil,100],
+						["30Rnd_9x21_Mag",nil,60],
+						["9Rnd_45ACP_Mag",nil,200]
 					]
 				];
 			};
