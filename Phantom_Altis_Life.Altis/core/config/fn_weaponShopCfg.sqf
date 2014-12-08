@@ -69,11 +69,11 @@ switch(_shop) do
 					];
 			};
 			//Command
-			if (__GETC__(life_coplevel) >= 4) {
+			if (__GETC__(life_coplevel) >= 4) then {
 					_items = _items + [
 						["COMMAND =====",nil,0],
 						["arifle_MXC_Black_F",nil,20000],
-						["30Rnd_65x39_caseless_mag",nil,100],
+						["30Rnd_65x39_caseless_mag",nil,100]
 					];
 			};
 			//SWAT
@@ -132,7 +132,7 @@ switch(_shop) do
 						["optic_Nightstalker",nil,25000]
 					];
 			};
-			return ["APD Armory", _items]
+			return ["APD Armory", _items];
 		};
 	};
 	
