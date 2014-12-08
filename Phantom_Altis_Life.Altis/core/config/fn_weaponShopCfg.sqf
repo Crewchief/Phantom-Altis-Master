@@ -488,7 +488,7 @@ switch(_shop) do
 						["hgun_ACPC2_F",nil,5000],
 						["9Rnd_45ACP_Mag",nil,50],
 						["hgun_Rook40_F",nil,7000],
-						["hgun_P07_F",nil,5000]
+						["hgun_P07_F",nil,5000],
 						["16Rnd_9x21_Mag",nil,30],
 						["SMG_01_F",nil,8000],
 						["30Rnd_45ACP_Mag_SMG_01",nil,150],
