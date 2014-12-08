@@ -2685,7 +2685,7 @@ class Mission
 				class Item48
 				{
 					position[]={3199.7566,2.2495062,12924.143};
-					azimut=-188.1707;
+					azimut=-188.17101;
 					special="NONE";
 					id=145;
 					side="WEST";
@@ -9167,7 +9167,7 @@ class Mission
 		};
 		class Item529
 		{
-			position[]={3197.2026,2,12902.512};
+			position[]={3198.1804,2.0039306,12907.646};
 			id=742;
 			side="EMPTY";
 			vehicle="Land_HelipadCircle_F";
@@ -9495,7 +9495,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=217;
+		items=218;
 		class Item0
 		{
 			position[]={8459.6777,104.56568,25131.203};
@@ -11211,6 +11211,12 @@ class Mission
 			type="loc_Tourism";
 			colorName="ColorGreen";
 			angle=124.04665;
+		};
+		class Item217
+		{
+			position[]={3198.3481,2.0010254,12907.538};
+			name="cop_air_1";
+			type="Empty";
 		};
 	};
 };
