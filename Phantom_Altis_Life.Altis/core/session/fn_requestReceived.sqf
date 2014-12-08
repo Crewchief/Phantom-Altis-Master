@@ -34,7 +34,16 @@ if(!isServer && (!isNil "life_adminlevel" OR !isNil "life_coplevel" OR !isNil "l
 life_cash = parseNumber (_this select 2);
 life_atmcash = parseNumber (_this select 3);
 __CONST__(life_adminlevel,parseNumber(_this select 4));
-__CONST__(life_donator,0);
+__CONST__(life_donator,parseNumber(_this select 5));
+
+switch(__GETC__(life_donator)) do
+{
+	case 1: {life_paycheck = life_paycheck + 9000;};
+	case 2: {life_paycheck = life_paycheck + 24000;};
+	case 3: {life_paycheck = life_paycheck + 54000;};
+	case 4: {life_paycheck = life_paycheck + 84000;};
+	case 5: {life_paycheck = life_paycheck + 173500;};
+};
 
 //Loop through licenses
 if(count (_this select 6) > 0) then {
