@@ -38,104 +38,6 @@ switch(_shop) do
 						["ToolKit",nil,250],
 						["muzzle_snds_L",nil,650],
 						["FirstAidKit",nil,150],
-<<<<<<< HEAD
-						["NVGoggles",nil,2000]
-					];
-			};
-			//At least Patrol
-			if (__GETC__(life_coplevel) >= 2) then {
-				_items = _items + [
-						["PATROL ======",nil,0],
-						["SMG_02_ACO_F",nil,15000],
-						["30Rnd_9x21_Mag",nil,250],
-						["arifle_TRG20_F",nil,35000],
-						["30Rnd_556x45_Stanag",nil,130],
-						["optic_Holosight",nil,1200],
-						["optic_Arco",nil,2500],
-						["acc_flashlight",nil,750],
-						["MineDetector",nil,1000]
-					];
-			};
-			//At least Sergeant
-			if (__GETC__(life_coplevel) >= 3) then {
-					_items = _items + [
-						["SERGEANT ====",nil,0],
-						["arifle_MX_Black_F",nil,30000],
-						["30Rnd_65x39_caseless_mag",nil,100],
-						["arifle_MXC_Black_F",nil,20000],
-						["30Rnd_65x39_caseless_mag",nil,100],
-						["optic_DMS",nil,15500],
-						["optic_ACO_grn",nil,5000],
-						["muzzle_snds_H",nil,2750],
-						["B_UavTerminal",nil,5000]
-					];
-			};
-			//Command
-			if (__GETC__(life_coplevel) >= 4) then {
-					_items = _items + [
-						["COMMAND =====",nil,0],
-						["arifle_MXC_Black_F",nil,20000],
-						["30Rnd_65x39_caseless_mag",nil,100]
-					];
-			};
-			//SWAT
-			if (__GETC__(life_coplevel) == 5) then {
-					_items = _items + [
-						["SWAT ========",nil,0],
-						["arifle_MX_SW_Black_F",nil,60000],
-						["100Rnd_65x39_caseless_mag",nil,1000],
-						["srifle_EBR_F",nil,40000],
-						["20Rnd_762x51_Mag",nil,1000],
-						["LMG_Mk200_F","SwatCommandOnly",50000],
-						["200Rnd_65x39_cased_Box",nil,1000],
-						["srifle_LRR_LRPS_F",nil,50000],
-						["7Rnd_408_Mag",nil,3000],
-						["srifle_LRR_camo_F",nil,50000],
-						["7Rnd_408_Mag",nil,3000],
-						["launch_O_Titan_F","OnlyForJets",75000],
-						["Titan_AA",nil,10000],
-						["optic_MRCO",nil,12500],					
-						["optic_SOS",nil,5000],
-						["optic_tws_mg",nil,35000],
-						["optic_Hamr",nil,1000],
-						["optic_tws",nil,1000],
-						["optic_LRPS",nil,1000],
-						["acc_pointer_IR",nil,2500],
-						["muzzle_snds_H_MG",nil,5000],
-						["muzzle_snds_B",nil,2500],
-						["HandGrenade_Stone","FlashBang",3750],
-						["NVGoggles_OPFOR","SWAT NV's",1000]
-					];
-			};
-			//DEA
-			if (__GETC__(life_coplevel) >= 6) then {
-					_items = _items + [
-						["DEA =========",nil,0],
-						["srifle_EBR_F",nil,40000],
-						["20Rnd_762x51_Mag",nil,1000],
-						["LMG_Mk200_F","AdministrationOnly",50000],
-						["200Rnd_65x39_cased_Box",nil,1000]
-					];
-			};
-			//PMC
-			if (__GETC__(life_coplevel) >= 7) then {
-					_items = items + [
-						["PMC =========",nil,0],
-						["LMG_Mk200_F",nil,50000],
-						["200Rnd_65x39_cased_Box",nil,1000],
-						["srifle_GM6_F",nil,50000],
-						["5Rnd_127x108_APDS_Mag",nil,1000],
-						["srifle_GM6_camo_F",nil,50000],
-						["5Rnd_127x108_APDS_Mag",nil,1000],
-						["LMG_Zafir_F",nil,70000],
-						["150Rnd_762x51_Box",nil,1000],
-						["launch_NLAW_F",nil,50000],
-						["NLAW_F",nil,10000],
-						["optic_Nightstalker",nil,25000]
-					];
-			};
-			return ["APD Armory", _items];
-=======
 						["Medikit",nil,1000],
 						["NVGoggles",nil,2000],
 						["16Rnd_9x21_Mag",nil,50],
@@ -143,7 +45,6 @@ switch(_shop) do
 					]
 				];
 			};
->>>>>>> parent of dbf2d71... Cop Shop 1st Iteration
 		};
 	};
 	
