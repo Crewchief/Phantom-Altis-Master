@@ -14,25 +14,7 @@ _alt = _this select 4;
 _speed = speed cursorTarget;
 _handled = false;
 
-_interactionKey = if	//Restraining or robbing (Shift + R)
-	case 19:
-	{
-		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
-		{
-			[] call life_fnc_restrainAction;
-		};
-		
-//Robbing
-		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
-		{
-			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed && !(player getVariable["surrender",false])) then
-			{
-				[cursorTarget] spawn life_fnc_knockoutAction;
-			};
-			_handled = true;
-		};
-	};(count (actionKeys "User10") == 0) then {219} else {(actionKeys "User10") select 0};
+_interactionKey = if(count (actionKeys "User10") == 0) then {219} else {(actionKeys "User10") select 0};
 _mapKey = actionKeys "ShowMap" select 0;
 //hint str _code;
 _interruptionKeys = [17,30,31,32]; //A,S,W,D
@@ -116,23 +98,26 @@ switch (_code) do
 		};
 	};
 	
-	//Restraining or robbing (Shift + R)
+	//Restraining (Shift + R)
 	case 19:
 	{
 		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
 		{
 			[] call life_fnc_restrainAction;
 		};
-		
-        //Robbing
+	};
+	
+	//Knock out, this is experimental and yeah...
+	case 34:
+	{
+		if(_shift) then {_handled = true;};
 		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
 		{
-			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed && !(player getVariable["surrender",false])) then
+			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed) then
 			{
 				[cursorTarget] spawn life_fnc_knockoutAction;
 			};
-			_handled = true;
 		};
 	};
 
@@ -219,27 +204,6 @@ switch (_code) do
 			};
 		};
 	};
-	
-	//surrender... shift + g
-	case 34:
-	{
-		if(_shift) then {_handled = true;};
-
-		if (_shift) then
-		{
-			if (vehicle player == player && !(player getVariable ["restrained", false]) && (animationState player) != "Incapacitated" && !life_istazed) then
-			{
-				if (player getVariable ["surrender", false]) then
-				{
-					player setVariable ["surrender", false, true];
-				} else
-				{
-					[] spawn life_fnc_surrender;
-				};
-			};
-		};
-	};
-	
 	//U Key
 	case 22:
 	{
