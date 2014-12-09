@@ -35,7 +35,7 @@ switch (_side) do
 		];
 		
 		if(__GETC__(life_donator) > 0) then {
-			_ret = _ret + [["donator_spawn_1","Donator Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
+			_return = _return + [["donator_spawn_1","Donator Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
 		];
 		
 		if(count life_houses > 0) then {
