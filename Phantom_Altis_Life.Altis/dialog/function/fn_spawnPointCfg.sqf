@@ -34,9 +34,13 @@ switch (_side) do
 			["civ_spawn_4","Sofia","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
 		];
 		
+		//Donor
 		if(__GETC__(life_donator) > 0) then {
-			_return = _return + [["donator_spawn_1","Donator Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
-		];
+			_return = _return + [
+				["donator_spawn_1","Donor Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
+							
+			];
+		};
 		
 		if(count life_houses > 0) then {
 			{
