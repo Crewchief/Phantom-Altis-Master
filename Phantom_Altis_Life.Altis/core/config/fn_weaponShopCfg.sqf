@@ -632,7 +632,7 @@ switch(_shop) do
 						["DemoCharge_Remote_Mag",nil,150000],
 						["APERSTripMine_Wire_Mag",nil,130000],
 						["APERSBoundingMine_Range_Mag",nil,130000],
-						["GrenadeHand",nil,30000]
+						["GrenadeHand","Hand Grenade",30000]
 					]
 				];
 			};
@@ -734,7 +734,7 @@ switch(_shop) do
 						["launch_RPG32_F",nil,400000],
 						["RPG32_F",nil,50000],
 						["RPG32_HE_F",nil,60000],
-						["GrenadeHand",30000]
+						["GrenadeHand","Hand Grenade",30000]
 					]	
 				];
             };							
