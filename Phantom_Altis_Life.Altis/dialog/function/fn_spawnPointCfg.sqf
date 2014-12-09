@@ -34,6 +34,10 @@ switch (_side) do
 			["civ_spawn_4","Sofia","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
 		];
 		
+		if(__GETC__(life_donator) > 0) then {
+			_ret = _ret + [["donator_spawn_1","Donator Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]];
+		];
+		
 		if(count life_houses > 0) then {
 			{
 				_pos = call compile format["%1",_x select 0];

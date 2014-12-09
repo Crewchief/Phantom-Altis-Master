@@ -9526,7 +9526,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=221;
+		items=222;
 		class Item0
 		{
 			position[]={8459.6777,104.56568,25131.203};
@@ -11265,6 +11265,12 @@ class Mission
 		{
 			position[]={26777.227,22.536179,24598.063};
 			name="air_g_d_1";
+			type="Empty";
+		};
+		class Item221
+		{
+			position[]={26738.443,20.432871,24625.58};
+			name="donator_spawn_1";
 			type="Empty";
 		};
 	};
