@@ -2963,14 +2963,14 @@ class Mission
 				class Item72
 				{
 					position[]={16566.492,11,12746.075};
-					azimut=197.21629;
+					azimut=197.216;
 					special="NONE";
 					id=169;
 					side="WEST";
 					vehicle="B_RangeMaster_F";
 					skill=0.60000002;
 					text="h1_3_1";
-					init="this enableSimulation false; this allowDamage false; this addAction[""Cop Item Shop"",life_fnc_virt_menu,""cop""]; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu,"""",0,FALSE,FALSE,"""",' vehicle player == player && player distance _target < 4 ']; this allowDamage false;  this addAction[""Cop Clothing Shop"",life_fnc_clothingMenu,""cop""];  this addAction[""Cop Weapon Shop"",life_fnc_weaponShopMenu,""cop_basic""];  this addAction[""Patrol Officer Weapon Shop"",life_fnc_weaponShopMenu,""cop_patrol""];  this addAction[""Sergeant Weapon Shop"",life_fnc_weaponShopMenu,""cop_sergeant""]; this addAction[format[""%1 ($%2)"",[""license_cop_air""] call life_fnc_varToStr,[([""cair""] call life_fnc_licensePrice)] call life_fnc_numberText],life_fnc_buyLicense,""cair"",0,false,false,"""",' !license_cop_air && playerSide == west '];";
+					init="this enableSimulation false; this addAction[""Cop Item Shop"",life_fnc_virt_menu,""cop""];  this allowDamage false;  this addAction[""Cop Clothing Shop"",life_fnc_clothingMenu,""cop""];  this addAction[""APD Armory"",life_fnc_weaponShopMenu,""cop_basic""];  this addAction[format[""%1 ($%2)"",[""license_cop_air""] call life_fnc_varToStr,[([""cair""] call life_fnc_licensePrice)] call life_fnc_numberText],life_fnc_buyLicense,""cair"",0,false,false,"""",' !license_cop_air && playerSide == west ']; this addAction[format[""%1 ($%2)"",[""license_cop_cg""] call life_fnc_varToStr,[([""cg""] call life_fnc_licensePrice)] call life_fnc_numberText],life_fnc_buyLicense,""cg"",0,false,false,"""",' !license_cop_cg && playerSide == west ']; this enableSimulation false; this allowDamage false; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu,"""",0,FALSE,FALSE,"""",' vehicle player == player && player distance _target < 4 '];";
 				};
 				class Item73
 				{
@@ -5192,10 +5192,10 @@ class Mission
 		class Item158
 		{
 			position[]={17486.396,12.887951,13266.713};
-			azimut=130.24707;
+			azimut=130.24699;
 			id=374;
 			side="EMPTY";
-			vehicle="Land_Atm_02_F";
+			vehicle="Land_Billboard_F";
 			skill=0.60000002;
 			init="this enableSimulation false; this allowDamage false; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu,"""",0,FALSE,FALSE,"""",' vehicle player == player && player distance _target < 4 '];";
 		};
@@ -9200,6 +9200,7 @@ class Mission
 		class Item529
 		{
 			position[]={3198.1804,2.0039306,12907.646};
+			azimut=226.39339;
 			id=745;
 			side="EMPTY";
 			vehicle="Land_HelipadCircle_F";
@@ -9829,14 +9830,14 @@ class Mission
 			position[]={3669.3062,10.283569,13141.993};
 			name="civ_car_1";
 			type="Empty";
-			angle=222.94595;
+			angle=182.32259;
 		};
 		class Item40
 		{
 			position[]={3674.2961,10.355971,13141.762};
 			name="civ_car_1_1";
 			type="Empty";
-			angle=208.40829;
+			angle=181.86014;
 		};
 		class Item41
 		{
@@ -10369,17 +10370,17 @@ class Mission
 		};
 		class Item107
 		{
-			position[]={23219.197,3.1900001,18843.744};
+			position[]={23219.822,3.1900001,18822.523};
 			name="civ_air_2";
 			type="Empty";
-			angle=-51.978699;
+			angle=-85.909897;
 		};
 		class Item108
 		{
 			position[]={23219.32,3.1900001,18797.271};
 			name="civ_air_2_2";
 			type="Empty";
-			angle=-40.436699;
+			angle=-87.353104;
 		};
 		class Item109
 		{
@@ -11249,30 +11250,35 @@ class Mission
 			position[]={3198.3481,2.0010254,12907.538};
 			name="cop_air_1";
 			type="Empty";
+			angle=178.39735;
 		};
 		class Item218
 		{
 			position[]={26795.25,20.46953,24668.932};
 			name="donator_1_spawn";
 			type="Empty";
+			angle=128.43997;
 		};
 		class Item219
 		{
 			position[]={26801.365,22.121868,24626.869};
 			name="car_g_d_1";
 			type="Empty";
+			angle=134.06238;
 		};
 		class Item220
 		{
-			position[]={26777.227,22.536179,24598.063};
+			position[]={26781.895,22.396063,24607.145};
 			name="air_g_d_1";
 			type="Empty";
+			angle=136.3979;
 		};
 		class Item221
 		{
 			position[]={26738.443,20.432871,24625.58};
 			name="don_airfield";
 			type="Empty";
+			angle=131.23592;
 		};
 	};
 };
