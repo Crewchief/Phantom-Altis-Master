@@ -3393,23 +3393,23 @@ class Mission
 				};
 				class Item110
 				{
-					position[]={26792.352,19.926756,24681.043};
+					position[]={26785.729,21.100327,24648.285};
 					azimut=125;
 					id=207;
 					side="CIV";
 					vehicle="C_man_1";
 					skill=0.60000002;
-					init="this allowDamage false; this enableSimulation false; this addAction[""Donator Weapon Shop"",life_fnc_weaponShopMenu,""donator"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian']; this addAction[""Donator Market"",life_fnc_virt_menu,""donor"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian']; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu]; this addAction[""Banking Insurance ($1,000)"",{if(life_atmcash > 1000) then {life_has_insurance = true; life_atmcash = life_atmcash - 1000};},"""",0,false,false,"""",'!life_has_insurance'];";
+					init="this enableSimulation false; this allowDamage false; this addAction[""Donator Clothing Shop"",life_fnc_clothingMenu,""donator"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian'];";
 				};
 				class Item111
 				{
-					position[]={26787.141,20.083384,24675.01};
+					position[]={26787.311,21.058372,24649.865};
 					azimut=125;
 					id=208;
 					side="CIV";
 					vehicle="C_man_1";
 					skill=0.60000002;
-					init="this enableSimulation false; this allowDamage false; this addAction[""Donator Clothing Shop"",life_fnc_clothingMenu,""donator"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian'];";
+					init="this allowDamage false; this enableSimulation false; this addAction[""Donator Weapon Shop"",life_fnc_weaponShopMenu,""donator"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian']; this addAction[""Donator Market"",life_fnc_virt_menu,""donor"",0,false,false,"""",' !isNil ""life_donator"" && (call life_donator) > 0 && playerSide == civilian']; this addAction[""<t color='#ADFF2F'>ATM</t>"",life_fnc_atmMenu]; this addAction[""Banking Insurance ($1,000)"",{if(life_atmcash > 1000) then {life_has_insurance = true; life_atmcash = life_atmcash - 1000};},"""",0,false,false,"""",'!life_has_insurance'];";
 				};
 			};
 		};
