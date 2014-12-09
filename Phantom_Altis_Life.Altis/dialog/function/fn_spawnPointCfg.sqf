@@ -31,17 +31,9 @@ switch (_side) do
 			["civ_spawn_1","Kavala","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
 			["civ_spawn_2","Pyrgos","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
 			["civ_spawn_3","Athira","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
-			["civ_spawn_4","Sofia","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
+			["civ_spawn_4","Sofia","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
+			["don_airfield","Donor Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
 		];
-		
-		
-		//DONOR
-		if(__GETC__(life_donator) > 0) then {
-			_return = _return + [
-				["don_airfield","Donor Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
-				
-			];
-		};
 		
 		if(count life_houses > 0) then {
 			{
