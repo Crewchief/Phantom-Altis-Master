@@ -188,13 +188,13 @@ switch (_shop) do
 		{
 			_return set[count _return,["O_MRAP_02_hmg_F",1950000]];
 			_return set[count _return,["I_MRAP_03_hmg_F",2500000]];
+			_return set[count _return,["O_MRAP_02_gmg_F",3000000]];
+			_return set[count _return,["I_MRAP_03_gmg_F",3000000]];
 			_return set[count _return,["O_Heli_Light_02_F",4000000]];
 			_return set[count _return,["O_Heli_Transport_04_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_ammo_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_bench_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_covered_F",300000]];
-			_return set[count _return,["O_MRAP_02_gmg_F",3000000]];
-			_return set[count _return,["I_MRAP_03_gmg_F",3000000]];
 			_return set[count _return,["I_Heli_light_03_F",4000000]];
 			_return set[count _return,["B_Heli_Transport_01_camo_F",4500000]];		
 		};
@@ -202,19 +202,18 @@ switch (_shop) do
 		{
 			_return set[count _return,["O_MRAP_02_hmg_F",1950000]];
 			_return set[count _return,["I_MRAP_03_hmg_F",2500000]];
+			_return set[count _return,["O_MRAP_02_gmg_F",3000000]];
+			_return set[count _return,["I_MRAP_03_gmg_F",3000000]];
 			_return set[count _return,["O_Heli_Light_02_F",4000000]];
 			_return set[count _return,["O_Heli_Transport_04_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_ammo_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_bench_F",300000]];
 			_return set[count _return,["O_Heli_Transport_04_covered_F",300000]];
-			_return set[count _return,["O_MRAP_02_gmg_F",3000000]];
-			_return set[count _return,["I_MRAP_03_gmg_F",3000000]];
 			_return set[count _return,["I_Heli_light_03_F",4000000]];
 			_return set[count _return,["B_Heli_Transport_01_camo_F",3500000]];
 			_return set[count _return,["O_APC_Wheeled_02_rcws_F",5000000]];
 			_return set[count _return,["B_Heli_Light_01_armed_F",3750000]];
 			_return set[count _return,["B_Heli_Transport_03_F",4500000]];
-			_return set[count _return,["B_Heli_Transport_03_unarmed_F",3750000]];
 		};
 	};
 };
