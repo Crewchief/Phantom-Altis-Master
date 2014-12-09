@@ -105,6 +105,7 @@ class Life_Client_Core
 		class storeVehicle {};
 		class robAction {};
 		class captureHideout {};
+		class surrender {};
 		class gather {};
 	};
 	
