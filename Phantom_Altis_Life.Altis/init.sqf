@@ -15,3 +15,4 @@ life_versionInfo = "Altis Life RPG v3.1.4.8";
 StartProgress = true;
 
 [] execVM "teargas.sqf";
+[] execVM "zlt_fastrope.sqf";
