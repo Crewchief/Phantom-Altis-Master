@@ -40,7 +40,7 @@ switch (true) do
 		[_item] call life_fnc_storageBox;
 	};
 	
-	case (_item == "redgull"):
+	case (_item == "cocainep"):
 	{
 		if(([false,_item,1] call life_fnc_handleInv)) then
 		{
@@ -49,12 +49,45 @@ switch (true) do
 			[] spawn
 			{
 				life_redgull_effect = time;
-				titleText[localize "STR_ISTR_RedGullEffect","PLAIN"];
+				titleText["You can now run further for 15 minutes","PLAIN"];
+				player enableFatigue false;
+				waitUntil {!alive player OR ((time - life_redgull_effect) > (15 * 60))};
+				player enableFatigue true;
+			};
+		};
+	};
+	
+	case (_item == "redgull"):
+	{
+	if(__GETC__(life_coplevel) > 0) then {
+		if(([false,_item,1] call life_fnc_handleInv)) then
+		{
+			life_thirst = 100;
+			player setFatigue 0;
+			[] spawn
+			{
+				life_redgull_effect = time;
+				titleText["You can now run further for 15 minutes","PLAIN"];
+				player enableFatigue false;
+				waitUntil {!alive player OR ((time - life_redgull_effect) > (15 * 60))};
+				player enableFatigue true;
+			};
+		};
+	}else{
+		if(([false,_item,1] call life_fnc_handleInv)) then
+		{
+			life_thirst = 100;
+			player setFatigue 0;
+			[] spawn
+			{
+				life_redgull_effect = time;
+				titleText["You can now run further for 3 minutes, try cocaine!","PLAIN"];
 				player enableFatigue false;
 				waitUntil {!alive player OR ((time - life_redgull_effect) > (3 * 60))};
 				player enableFatigue true;
 			};
 		};
+	};
 	};
 	
 	case (_item == "spikeStrip"):
