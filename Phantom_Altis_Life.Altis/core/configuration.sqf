@@ -89,6 +89,7 @@ bank_robber = [];
 life_atmcash = 500000;
 life_paycheck = 6000;
 
+life_isSuicide = false;
 /*
 	Master Array of items?
 */
