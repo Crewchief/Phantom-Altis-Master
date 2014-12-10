@@ -37,7 +37,8 @@ switch (_side) do
 		
 		if(__GETC__(life_donator) > 0) then {
 			_return = _return + [
-				["don_airfield","Donor Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]				
+				["don_airfield","Donor Airfield","\a3\ui_f\data\map\MapControl\watertower_ca.paa"],
+				["don_airbase","North Donor Airbase","\a3\ui_f\data\map\MapControl\watertower_ca.paa"]
 			];
 		};
 		
