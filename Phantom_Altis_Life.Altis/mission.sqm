@@ -9561,7 +9561,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=236;
+		items=241;
 		class Item0
 		{
 			position[]={8459.6777,104.56568,25131.203};
@@ -11443,6 +11443,44 @@ class Mission
 			a=250;
 			b=120;
 			angle=-35.7243;
+		};
+		class Item236
+		{
+			position[]={11589.132,23.533253,12007.057};
+			name="pmc_spawn";
+			type="Empty";
+			angle=120.431;
+		};
+		class Item237
+		{
+			position[]={12284.938,123.9307,8881.6025};
+			name="rebel_spawn_1";
+			type="Empty";
+			angle=-5.2744217;
+		};
+		class Item238
+		{
+			position[]={20082.676,101.23606,6715.9551};
+			name="rebel_spawn_2";
+			type="Empty";
+		};
+		class Item239
+		{
+			position[]={14184.514,77.643372,21238.588};
+			name="rebel_spawn_3";
+			type="Empty";
+			angle=-24.521164;
+		};
+		class Item240
+		{
+			position[]={25716.031,18.225643,21273.23};
+			name="safezone_6";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			a=20;
+			b=20;
+			angle=-43.215347;
 		};
 	};
 };
