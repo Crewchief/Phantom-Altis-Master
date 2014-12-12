@@ -107,8 +107,12 @@ switch (_shop) do
 	
 	case "cop_air":
 	{
-		_return pushBack
-		["B_Heli_Light_01_F",75000];
+		
+		if(__GETC__(life_coplevel) > 1) then
+		{
+			_return pushBack
+			["B_Heli_Light_01_F",75000];
+		};
 		if(__GETC__(life_coplevel) > 2) then
 		{
 			_return pushBack
@@ -144,8 +148,12 @@ switch (_shop) do
 		[
 			["B_Boat_Transport_01_F",3000],
 			["C_Boat_Civil_01_police_F",20000],
-			["B_Boat_Armed_01_minigun_F",75000],
 			["B_SDV_01_F",100000]
+		];
+		if(__GETC__(life_coplevel) > 2) then
+		[
+			_return pushBack
+			["B_Boat_Armed_01_minigun_F",75000]
 		];
 	};
 
