@@ -97,6 +97,7 @@ switch (_filter) do
 		{
 			_ret pushBack ["V_TacVestIR_blk",nil,1750];
 			_ret pushBack ["V_RebreatherB",nil,1500];
+		};
 	};
 	
 	//Backpacks
