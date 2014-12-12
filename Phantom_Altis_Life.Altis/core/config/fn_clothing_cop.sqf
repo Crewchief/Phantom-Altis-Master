@@ -22,32 +22,45 @@ switch (_filter) do
 		_ret pushBack ["U_Rangemaster","Cop Uniform",25];
 		if(__GETC__(life_coplevel) > 1) then
 		{
-			_ret pushBack ["U_B_CombatUniform_mcam_tshirt",nil,350];
-			_ret pushBack ["U_B_survival_uniform",nil,1250];
+			
 		};
 		if(__GETC__(life_coplevel) > 2) then
 		{
-			_ret pushBack ["U_B_CombatUniform_mcam_worn",nil,550];
+			_ret pushBack ["U_B_CombatUniform_mcam_vest","Standard Sergeant Uniform",150];
+			_ret pushBack ["U_B_CombatUniform_mcam_tshirt","Sergeant Fatigues",150];
+			_ret pushBack ["U_B_survival_uniform","Water Operations",200];
+		};
+		if(__GETC__(life_coplevel) > 3) then
+		{
+			_ret pushBack ["U_B_CTRG_1","Staff Sergeant Uniform",150];
+			_ret pushBack ["U_B_GhillieSuit","Ghillie suit(for sniper ops only)",200];
+			_ret pushBack ["U_B_PilotCoveralls","Pilot Uniform",200];
+		};
+		if(__GETC__(life_coplevel) > 4) then
+		{
+			_ret pushBack ["U_B_CTRG_3","Police Command Uniform",200];
+			_ret pushBack ["U_B_SpecopsUniform_sgg","Police Command Fatigues",150];
 		};
 	};
 	
 	//Hats
 	case 1:
 	{
+		_ret pushBack ["H_Cap_blk","Police Cap",25];
 		if(__GETC__(life_coplevel) > 1) then
 		{
-			_ret pushBack ["H_HelmetB_plain_mcamo",nil,75];
-			_ret pushBack ["H_Booniehat_mcamo",nil,120];
+			_ret pushBack ["H_CrewHelmetHeli_B","Gas Mask",100];
 		};
 		
 		if(__GETC__(life_coplevel) > 2) then
 		{
-			_ret pushBack ["H_MilCap_mcamo",nil,100];
+			_ret pushBack ["H_Booniehat_tan","Boonie Hat",50];
+			_ret pushBack ["H_HelmetB_snakeskin","Combat Helmet",150];
 		};
 		
 		if(__GETC__(life_coplevel) > 3) then
 		{
-			_ret pushBack ["H_CrewHelmetHeli_B","Gas Mask",100];
+			_ret pushBack ["H_PilotHelmetHeli_B","Heli Pilot",100];
 		};
 	};
 	
@@ -76,7 +89,14 @@ switch (_filter) do
 		if(__GETC__(life_coplevel) > 1) then
 		{
 			_ret pushBack ["V_PlateCarrier2_rgr",nil,1500];
+			_ret pushBack ["V_PlateCarrierGL_rgr",nil,1500];
+			_ret pushBack ["V_TacVest_blk_POLICE",nil,1500];
+			
 		};
+		if(__GETC__(life_coplevel) > 2) then
+		{
+			_ret pushBack ["V_TacVestIR_blk",nil,1750];
+			_ret pushBack ["V_RebreatherB",nil,1500];
 	};
 	
 	//Backpacks
