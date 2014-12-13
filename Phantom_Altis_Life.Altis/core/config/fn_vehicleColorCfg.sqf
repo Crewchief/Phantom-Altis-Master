@@ -155,8 +155,7 @@ switch (_vehicle) do
 	{
 		_ret = 
 		[
-			["\A3\Soft_F\MRAP_01\Data\mrap_01_base_co.paa","cop"],
-			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","cop"],
+			["textures\cop_hunter.paa","cop"],
 			["textures\SWAT\swat_hunter_1.PAA","cop","textures\SWAT\swat_hunter_2.PAA"]
 		];
 	};

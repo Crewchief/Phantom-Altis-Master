@@ -26,11 +26,11 @@ switch (_className) do
 	case "C_Boat_Civil_01_rescue_F": {85};
 	case "B_Truck_01_box_F": {450};
 	case "B_Truck_01_transport_F": {325};
-	case "B_MRAP_01_F": {65};
+	case "B_MRAP_01_F": {50};
 	case "O_MRAP_02_F": {60};
 	case "I_MRAP_03_F": {58};
-	case "B_Heli_Light_01_F": {90};
-	case "O_Heli_Light_02_unarmed_F": {210};
+	case "B_Heli_Light_01_F": {50};
+	case "O_Heli_Light_02_unarmed_F": {50};
 	case "I_Heli_Transport_02_F": {375};
 	case "C_Rubberboat": {45};
 	case "O_Boat_Armed_01_hmg_F": {175};
