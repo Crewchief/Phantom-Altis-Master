@@ -24,7 +24,7 @@ life_bail_paid = false;
 life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
-life_respawn_timer = 1; //Scaled in minutes
+life_respawn_timer = 0.5; //Scaled in minutes
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
@@ -77,9 +77,9 @@ life_thirst = 100;
 life_hunger = 100;
 __CONST__(life_paycheck_period,5); //Five minutes
 life_cash = 0;
-__CONST__(life_impound_car,350);
-__CONST__(life_impound_boat,250);
-__CONST__(life_impound_air,850);
+__CONST__(life_impound_car,12000);
+__CONST__(life_impound_boat,15000);
+__CONST__(life_impound_air,20000);
 life_istazed = false;
 life_my_gang = ObjNull;
 
@@ -223,7 +223,7 @@ sell_array =
 	["fuelF",500],
 	["spikeStrip",1200],
 	["cement",1950],
-	["goldbar",95000]
+	["goldbar",100000]
 ];
 __CONST__(sell_array,sell_array);
 
