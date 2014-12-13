@@ -401,7 +401,14 @@ switch(_shop) do
 						["arifle_Katiba_F",nil,30000],
 						["srifle_DMR_01_F",nil,50000],
 						["arifle_SDAR_F",nil,20000],
+						["srifle_EBR_F",nil,50000],
+						["LMG_Zafir_F",nil,100000],
+						["launch_RPG32_F",nil,500000],
+						["RPG32_F",nil,20000],
+						["20Rnd_762x51_Mag",nil,400],
+						["7Rnd_408_Mag",nil,500],
 						["optic_ACO_grn",nil,3500],
+						["optic_MRCO",nil,1000]
 						["optic_Holosight",nil,3600],
 						["acc_flashlight",nil,1000],
 						["optic_Hamr",nil,7500],
@@ -410,6 +417,15 @@ switch(_shop) do
 						["30Rnd_556x45_Stanag",nil,300],
 						["10Rnd_762x51_Mag",nil,500],
 						["30Rnd_65x39_caseless_green",nil,275]
+						["muzzle_snds_B",nil,300]
+						["muzzle_snds_M",nil,300]
+						["muzzle_snds_H",nil,300]
+						["ItemGPS",nil,100],
+						["Rangefinder",nil,300],
+						["ItemMap",nil,150],
+						["NVGoggles",nil,150],
+						["FirstAidKit",nil,50],
+						["ToolKit",nil,350]
 					]
 				];
 			};
