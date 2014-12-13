@@ -50,9 +50,9 @@ if((_vehicle isKindOf "Car") || (_vehicle isKindOf "Air") || (_vehicle isKindOf 
 		_type = getText(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "displayName");
 		switch (true) do
 		{
-			case (_vehicle isKindOf "Car"): {_price = (call life_impound_car);};
-			case (_vehicle isKindOf "Ship"): {_price = (call life_impound_boat);};
-			case (_vehicle isKindOf "Air"): {_price = (call life_impound_air);};
+			case (_vehicle isKindOf "Car"): {_price = 5000;};
+			case (_vehicle isKindOf "Ship"): {_price = 10000;};
+			case (_vehicle isKindOf "Air"): {_price = 25000;};
 		};
 		
 		life_impound_inuse = true;
