@@ -87,7 +87,7 @@ life_vehicles = [];
 bank_robber = [];
 
 life_atmcash = 500000;
-life_paycheck = 6000;
+life_paycheck = 9000;
 
 /*
 	Master Array of items?
@@ -191,8 +191,8 @@ life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocai
 sell_array = 
 [
 	["apple",50],
-	["heroinu",1850],
-	["heroinp",2650],
+	["heroinu",5050],
+	["heroinp",12050],
 	["salema",45],
 	["ornate",40],
 	["mackerel",175],
@@ -206,14 +206,14 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",2350],
+	["marijuana",6050],
 	["tbacon",25],
 	["lockpick",75],
 	["pickaxe",750],
 	["redgull",200],
 	["peach",55],
-	["cocaine",3000],
-	["cocainep",5000],
+	["cocaine",4000],
+	["cocainep",8000],
 	["diamond",750],
 	["diamondc",2000],
 	["iron_r",3200],
