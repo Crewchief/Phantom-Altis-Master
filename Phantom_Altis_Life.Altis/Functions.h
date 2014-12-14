@@ -107,6 +107,7 @@ class Life_Client_Core
 		class captureHideout {};
 		class gather {};
 		class surrender {}; //surrender action
+		class removeWeaponAction {}; //Strip weapons
 	};
 	
 	class Housing
@@ -250,7 +251,8 @@ class Life_Client_Core
 		class robPerson {};
 		class removeLicenses {};
 		class demoChargeTimer {};
-		class civLoadout {};
+		class civLoadout		{};
+		class removeWeapons {};
 	};
 	
 	class Vehicle
