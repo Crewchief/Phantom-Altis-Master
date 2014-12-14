@@ -413,6 +413,7 @@ switch(_shop) do
 						["acc_flashlight",nil,1000],
 						["optic_Hamr",nil,7500],
 						["30Rnd_9x21_Mag",nil,200],
+						["150Rnd_762x51_Box_Tracer",nil,450],
 						["20Rnd_556x45_UW_mag",nil,125],
 						["30Rnd_556x45_Stanag",nil,300],
 						["10Rnd_762x51_Mag",nil,500],
