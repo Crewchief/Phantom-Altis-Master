@@ -87,6 +87,10 @@ switch (_filter) do
 	case 3:
 	{
 		[
+		["V_BandollierB_cbr",nil,1500],
+		["V_Chestrig_khk",nil,2500],
+		["V_TacVest_camo",nil,3500],
+		["V_Press_F",nil,2000]
 		];
 	};
 	
