@@ -44,6 +44,7 @@ if(count (actionKeys "User10") != 0 && {(inputAction "User10" > 0)}) exitWith {
 	true;
 };
 
+
 switch (_code) do
 {
 	//Space key for Jumping
@@ -61,11 +62,22 @@ switch (_code) do
 	//Map Key
 	case _mapKey:
 	{
-		switch (playerSide) do 
-		{
-			case west: {if(!visibleMap) then {[] spawn life_fnc_copMarkers;}};
-			case independent: {if(!visibleMap) then {[] spawn life_fnc_medicMarkers;}};
-		};
+    switch (playerSide) do 
+	{
+		case west: {if(!visibleMap) then {[] spawn life_fnc_copMarkers;}};
+		case independent: {if(!visibleMap) then {[] spawn life_fnc_medicMarkers;}};
+		default {if(!visibleMap) 
+		then 
+	{						
+		_index = [life_my_gang,life_gang_list] call fnc_index;
+		if(_index != -1) 
+		then 
+	{
+		[] spawn life_fnc_gangMarkers;
+	};
+	};
+	};
+	};
 	};
 	
 	//Holster / recall weapon.
@@ -98,33 +110,11 @@ switch (_code) do
 		};
 	};
 	
-	//Restraining or robbing (Shift + R)
-	case 19:
+	// TAB key
+	case 15:
 	{
-		if(_shift) then {_handled = true;};
-		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget == civilian) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
-		{
-			[] call life_fnc_restrainAction;
-		};
-		
-	//Robbing
-		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
-		{
-			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed && !(player getVariable["surrender",false])) then
-			{
-				[cursorTarget] spawn life_fnc_knockoutAction;
-			};
-			_handled = true;
-		};
-	};
-	
-	//Surrender ... shift + g
-	case 34:
-	{
-		if(_shift) then {_handled = true;};
-
-		if (_shift) then
-		{
+		if(!_alt && !_ctrlKey) then {
+			
 			if (vehicle player == player && !(player getVariable ["restrained", false]) && (animationState player) != "Incapacitated" && !life_istazed) then
 			{
 				if (player getVariable ["surrender", false]) then
@@ -136,7 +126,75 @@ switch (_code) do
 				};
 			};
 		};
+	};
+	
+	//Restraining (Shift + R)
+	case 19:
+	{
+	
+		if(_shift) then {_handled = true;};
+		if(_shift && playerSide == west && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+		{
+			[] call life_fnc_restrainAction;
+		};
 		
+		 if(_shift) then {_handled = true;};
+		  if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && (isPlayer cursorTarget) && (side cursorTarget in [civilian,independent]) && alive cursorTarget && cursorTarget distance player < 3.5 && !(cursorTarget getVariable "Escorting") && !(cursorTarget getVariable "restrained") && speed cursorTarget < 1) then
+		  {
+		   if([false,"zipties",1] call life_fnc_handleInv) then
+			{
+			[] call life_fnc_restrainAction;
+		   }
+		   else
+		   {
+			hint "You have no zipties!";
+		   };
+		  };
+	};
+	
+
+	//Knock out, this is experimental and yeah...
+	case 34:
+	{
+		if(_shift) then {_handled = true;};
+		if(_shift && playerSide == civilian && !isNull cursorTarget && cursorTarget isKindOf "Man" && isPlayer cursorTarget && alive cursorTarget && cursorTarget distance player < 4 && speed cursorTarget < 1) then
+		{
+			if((animationState cursorTarget) != "Incapacitated" && (currentWeapon player == primaryWeapon player OR currentWeapon player == handgunWeapon player) && currentWeapon player != "" && !life_knockout && !(player getVariable["restrained",false]) && !life_istazed) then
+			{
+				[cursorTarget] spawn life_fnc_knockoutAction;
+			};
+		};
+		
+		if (!_shift) then
+		{
+		if(playerSide in [west,independent] && vehicle player != player && !life_siren2_active && ((driver vehicle player) == player)) then
+		{
+			[] spawn
+			{
+				life_siren3_active = true;
+				sleep 0.83;
+				life_siren3_active = false;
+			};
+			_veh = vehicle player;
+			if(isNil {_veh getVariable "siren3"}) then {_veh setVariable["siren3",false,true];};
+			if((_veh getVariable "siren3")) then
+			{
+				titleText ["Yelp Off","PLAIN"];
+				_veh setVariable["siren3",false,true];
+			}
+				else
+			{
+				titleText ["Yelp On","PLAIN"];
+				_veh setVariable["siren3",true,true];
+				if(playerSide == west) then {
+					[[_veh],"life_fnc_copSiren3",nil,true] spawn life_fnc_MP;
+				} else {
+
+					[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
+				};
+			};
+		};
+	};
 	};
 
 	//T Key (Trunk)
@@ -193,35 +251,109 @@ switch (_code) do
 	
 	//F Key
 	case 33:
-	{
-		if(playerSide in [west,independent] && vehicle player != player && !life_siren_active && ((driver vehicle player) == player)) then
+	{	if(_shift) then
+            {
+               
+				if(playerSide in [west,independent] && vehicle player != player && !life_siren_active && ((driver vehicle player) == player)) then
+				{
+					[] spawn
+					{
+						life_siren_active = true;
+						sleep 4.6;
+						life_siren_active = false;
+					};
+					_veh = vehicle player;
+					if(isNil {_veh getVariable "siren"}) then {_veh setVariable["siren",false,true];};
+					if((_veh getVariable "siren")) then
+					{
+						titleText ["Sirens Off","PLAIN"];
+						_veh setVariable["siren",false,true];
+					}
+						else
+					{
+						titleText ["Sirens On","PLAIN"];
+						_veh setVariable["siren",true,true];
+						if(playerSide == west) then {
+							[[_veh],"life_fnc_copSiren",nil,true] spawn life_fnc_MP;
+						} else {
+							//I do not have a custom sound for this and I really don't want to go digging for one, when you have a sound uncomment this and change medicSiren.sqf in the medical folder.
+							[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
+						};
+					};
+			};
+	};
+		if (!_shift) then
+		{
+		if(playerSide in [west,independent] && vehicle player != player && !life_siren2_active && ((driver vehicle player) == player)) then
 		{
 			[] spawn
 			{
-				life_siren_active = true;
-				sleep 4.7;
-				life_siren_active = false;
+				life_siren2_active = true;
+				sleep 5;
+				life_siren2_active = false;
 			};
 			_veh = vehicle player;
-			if(isNil {_veh getVariable "siren"}) then {_veh setVariable["siren",false,true];};
-			if((_veh getVariable "siren")) then
+			if(isNil {_veh getVariable "siren2"}) then {_veh setVariable["siren2",false,true];};
+			if((_veh getVariable "siren2")) then
 			{
-				titleText [localize "STR_MISC_SirensOFF","PLAIN"];
-				_veh setVariable["siren",false,true];
+				titleText ["Siren 2 Off","PLAIN"];
+				_veh setVariable["siren2",false,true];
 			}
 				else
 			{
-				titleText [localize "STR_MISC_SirensON","PLAIN"];
-				_veh setVariable["siren",true,true];
+				titleText ["Siren 2 On","PLAIN"];
+				_veh setVariable["siren2",true,true];
 				if(playerSide == west) then {
-					[[_veh],"life_fnc_copSiren",nil,true] spawn life_fnc_MP;
+					[[_veh],"life_fnc_copSiren2",nil,true] spawn life_fnc_MP;
 				} else {
-					//I do not have a custom sound for this and I really don't want to go digging for one, when you have a sound uncomment this and change medicSiren.sqf in the medical folder.
-					//[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
+
+					[[_veh],"life_fnc_medicSiren",nil,true] spawn life_fnc_MP;
 				};
 			};
 		};
 	};
+};
+
+//V Key
+	case 47:
+	{
+		if(playerSide != west && (player getVariable "restrained") OR (player getVariable "transporting")) then {_handled = true;};
+	};
+	
+	//Takwondo(Traditional Martial arts in korea)(Shift + 2)
+	case 4:
+	{
+		if(_shift) then {_handled = true;};
+			player playMove "AmovPercMstpSnonWnonDnon_exerciseKata";
+	};
+
+	//Kneebend Slow(Shift + 3)
+	case 5:
+	{
+		if(_shift) then {_handled = true;};
+			player playMove "AmovPercMstpSnonWnonDnon_exercisekneeBendA";
+	};
+
+	//Kneebend Fast(Shift + 4)
+	case 6:
+	{
+	if(_shift) then {_handled = true;};
+		player playMove "AmovPercMstpSnonWnonDnon_exercisekneeBendB";
+	};
+
+	//Pushup(Shift + 5)
+	case 7:
+	{
+	if(_shift) then {_handled = true;};
+			player playMove "AmovPercMstpSnonWnonDnon_exercisePushup";
+	};
+	//1 Key
+	case 2:
+	{
+		if(dialog) exitWith {};
+		[] call life_fnc_wantedMenu;
+	};
+	
 	//U Key
 	case 22:
 	{
@@ -235,16 +367,16 @@ switch (_code) do
 			if(_veh isKindOf "House_F" && playerSide == civilian) then {
 				if(_veh in life_vehicles && player distance _veh < 8) then {
 					_door = [_veh] call life_fnc_nearestDoor;
-					if(_door == 0) exitWith {hint localize "STR_House_Door_NotNear"};
+					if(_door == 0) exitWith {hint "You are not near a door!"};
 					_locked = _veh getVariable [format["bis_disabled_Door_%1",_door],0];
 					if(_locked == 0) then {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],1,true];
 						_veh animate [format["door_%1_rot",_door],0];
-						systemChat localize "STR_House_Door_Lock";
+						systemChat "You have locked that door.";
 					} else {
 						_veh setVariable[format["bis_disabled_Door_%1",_door],0,true];
 						_veh animate [format["door_%1_rot",_door],1];
-						systemChat localize "STR_House_Door_Unlock";
+						systemChat "You have unlocked that door.";
 					};
 				};
 			} else {
@@ -256,26 +388,21 @@ switch (_code) do
 						} else {
 							[[_veh,0],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};
-						systemChat localize "STR_MISC_VehUnlock";
+						systemChat "You have unlocked your vehicle.";
+						[[_veh],"life_fnc_UnLockCarSound",nil,true] spawn life_fnc_MP;
+						player say3D "car_unlock";
 					} else {
 						if(local _veh) then {
 							_veh lock 2;
 						} else {
 							[[_veh,2],"life_fnc_lockVehicle",_veh,false] spawn life_fnc_MP;
 						};	
-						systemChat localize "STR_MISC_VehLock";
+						systemChat "You have locked your vehicle.";
+						[[_veh],"life_fnc_LockCarSound",nil,true] spawn life_fnc_MP;
+						player say3D "car_lock";
 					};
 				};
 			};
-		};
-	};
-	//Clueless - Zac
-	//Cops can open gates with O
-	case 24: {
-		if (playerSide == west ) then {
-			_NearestGates = nearestObjects [player, ["Land_BarGate_F"],20];
-			_NearestGates select 0 animate ["Door_1_rot", if (_NearestGates select 0 animationphase "Door_1_rot" ==0) then {1} else {0}];
-			_NearestGates select 1 animate ["Door_1_rot", if (_NearestGates select 1 animationphase "Door_1_rot" ==0) then {1} else {0}];
 		};
 	};
 };

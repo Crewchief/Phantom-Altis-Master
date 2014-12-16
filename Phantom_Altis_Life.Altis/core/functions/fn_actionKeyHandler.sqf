@@ -20,10 +20,9 @@ if(isNull _curTarget) exitWith {
 			[_fish] call life_fnc_catchFish;
 		};
 	} else {
-		if(playerSide == civilian && !life_action_gathering) then {
+		if(playerSide == civilian) then {
 			_handle = [] spawn life_fnc_gather;
 			waitUntil {scriptDone _handle};
-			life_action_gathering = false;
 		};
 	};
 };
@@ -55,6 +54,10 @@ if(_curTarget isKindOf "Man" && {!alive _curTarget} && {playerSide in [west,inde
 if(isPlayer _curTarget && _curTarget isKindOf "Man") then {
 	if((_curTarget getVariable["restrained",false]) && !dialog && playerSide == west) then {
 		[_curTarget] call life_fnc_copInteractionMenu;
+	};
+	
+	if((!dialog && playerSide == civilian && (player distance _curTarget < 4) && !(player getVariable["restrained",false]))) then {
+		[_curTarget] call life_fnc_civInteractionMenu;
 	};
 } else {
 	//OK, it wasn't a player so what is it?

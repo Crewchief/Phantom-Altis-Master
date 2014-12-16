@@ -2,7 +2,7 @@
 /*
 	File: fn_virt_buy.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Buy a virtual item from the store.
 */
@@ -16,7 +16,7 @@ _diff = [_type,parseNumber(_amount),life_carryWeight,life_maxWeight] call life_f
 _amount = parseNumber(_amount);
 if(_diff <= 0) exitWith {hint localize "STR_NOTF_NoSpace"};
 _amount = _diff;
-_hideout = (nearestObjects[getPosATL player,["Land_u_Barracks_V2_F","Land_i_Barracks_V2_F"],25]) select 0;
+_hideout = (nearestObjects[getPosATL player,["Land_u_Barracks_V2_F","Land_i_Barracks_V2_F","FlagPole_F"],25]) select 0;
 if((_price * _amount) > life_cash && {!isNil "_hideout" && {!isNil {grpPlayer getVariable "gang_bank"}} && {(grpPlayer getVariable "gang_bank") <= _price * _amount}}) exitWith {hint localize "STR_NOTF_NotEnoughMoney"};
 
 _name = [([_type,0] call life_fnc_varHandle)] call life_fnc_varToStr;
@@ -42,7 +42,7 @@ if(([true,_type,_amount] call life_fnc_handleInv)) then
 		} else {
 			if((_price * _amount) > life_cash) exitWith {[false,_type,_amount] call life_fnc_handleInv; hint localize "STR_NOTF_NotEnoughMoney";};
 			hint format[localize "STR_Shop_Virt_BoughtItem",_amount,_name,[(_price * _amount)] call life_fnc_numberText];
-			__SUB__(life_cash,_price * _amount);
+			__SUB__(life_cash,_price);
 		};
 	} else {
 		if((_price * _amount) > life_cash) exitWith {hint localize "STR_NOTF_NotEnoughMoney"; [false,_type,_amount] call life_fnc_handleInv;};
@@ -53,4 +53,3 @@ if(([true,_type,_amount] call life_fnc_handleInv)) then
 };
 
 [0] call SOCK_fnc_updatePartial;
-[3] call SOCK_fnc_updatePartial;

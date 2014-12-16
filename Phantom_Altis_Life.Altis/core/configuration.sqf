@@ -25,27 +25,37 @@ life_impound_inuse = false;
 life_action_inUse = false;
 life_spikestrip = ObjNull;
 life_respawn_timer = 0.5; //Scaled in minutes
+Life_request_timer = false;
+life_has_insurance = false;
 life_knockout = false;
 life_interrupted = false;
 life_respawned = false;
 life_removeWanted = false;
-life_action_gathering = false;
+life_donDis = 1;
+life_newDonateSys = false;
+life_istazed = false;
+life_isDowned = false;
+life_god = false;
+life_frozen = false;
+life_is_alive = false;
+life_Car_God = 0;
 
 //Persistent Saving
 __CONST__(life_save_civ,TRUE); //Save weapons for civs?
 __CONST__(life_save_yinv,TRUE); //Save Y-Inventory for players?
 
 //Revive constant variables.
-__CONST__(life_revive_cops,TRUE); //Set to false if you don't want cops to be able to revive downed players.
-__CONST__(life_revive_fee,1000); //Fee for players to pay when revived.
+__CONST__(life_revive_cops,FALSE); //Set to false if you don't want cops to be able to revive downed players.
+__CONST__(life_revive_fee,4000); //Fee for players to pay when revived.
+__CONST__(life_kidney_fee,9000); //Fee for players to pay when revived.
 
 //House Limit
-__CONST__(life_houseLimit,3); //Maximum amount of houses a player can buy (TODO: Make Tiered licenses).
+__CONST__(life_houseLimit,5); //Maximum amount of houses a player can buy (TODO: Make Tiered licenses).
 
 //Gang related stuff?
-__CONST__(life_gangPrice,75000); //Price for creating a gang (They're all persistent so keep it high to avoid 345345345 gangs).
-__CONST__(life_gangUpgradeBase,10000); //MASDASDASD
-__CONST__(life_gangUpgradeMultipler,2.5); //BLAH
+__CONST__(life_gangPrice,50000); //Price for creating a gang (They're all persistent so keep it high to avoid 345345345 gangs).
+__CONST__(life_gangUpgradeBase,4000); //MASDASDASD
+__CONST__(life_gangUpgradeMultipler,3.0); //BLAH
 
 __CONST__(life_enableFatigue,true); //Enable / Disable the ARMA 3 Fatigue System
 
@@ -56,8 +66,8 @@ life_clothing_purchase = [-1,-1,-1,-1,-1];
 ****** Weight Variables *****
 *****************************
 */
-life_maxWeight = 24; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
-life_maxWeightT = 24; //Static variable representing the players max carrying weight on start.
+life_maxWeight = 50; //Identifies the max carrying weight (gets adjusted throughout game when wearing different types of clothing).
+life_maxWeightT = 50; //Static variable representing the players max carrying weight on start.
 life_carryWeight = 0; //Represents the players current inventory weight (MUST START AT 0).
 
 /*
@@ -68,6 +78,7 @@ life_carryWeight = 0; //Represents the players current inventory weight (MUST ST
 life_net_dropped = false;
 life_hit_explosive = false;
 life_siren_active = false;
+life_siren2_active = false;
 life_bank_fail = false;
 life_use_atm = true;
 life_is_arrested = false;
@@ -77,25 +88,42 @@ life_thirst = 100;
 life_hunger = 100;
 __CONST__(life_paycheck_period,5); //Five minutes
 life_cash = 0;
-__CONST__(life_impound_car,12000);
-__CONST__(life_impound_boat,15000);
-__CONST__(life_impound_air,20000);
+__CONST__(life_impound_car,1000);
+__CONST__(life_impound_boat,1500);
+__CONST__(life_impound_air,2000);
 life_istazed = false;
 life_my_gang = ObjNull;
 
 life_vehicles = [];
 bank_robber = [];
+switch (playerSide) do
+{
+	case west:
+	{
+		life_atmcash = 30000; //Starting Bank Money
+		//life_paycheck = 400; //Paycheck Amount
+	};
+	case civilian:
+	{
+		life_atmcash = 100000; //Starting Bank Money
+		life_paycheck = 500; //Paycheck Amount
+	};
 
-life_atmcash = 500000;
-life_paycheck = 9000;
+	case independent: {
+		life_atmcash = 30000;
+		life_paycheck = 650;
+	};
+};
 
 /*
 	Master Array of items?
 */
-life_vShop_rentalOnly = ["B_MRAP_01_hmg_F","B_G_Offroad_01_armed_F"];
+
+life_vShop_rentalOnly = ["B_MRAP_01_hmg_F"];
 __CONST__(life_vShop_rentalOnly,life_vShop_rentalOnly); //These vehicles can never be bought and only 'rented'. Used as a balancer & money sink. If you want your server to be chaotic then fine.. Remove it..
 
-life_inv_items = 
+
+life_inv_items =
 [
 	"life_inv_oilu",
 	"life_inv_oilp",
@@ -144,7 +172,28 @@ life_inv_items =
 	"life_inv_boltcutter",
 	"life_inv_defusekit",
 	"life_inv_storagesmall",
-	"life_inv_storagebig"
+	"life_inv_storagebig",
+	"life_inv_wine",
+	"life_inv_grapes",
+	"life_inv_frog",
+	"life_inv_frogp",
+	"life_inv_crystalmeth",
+	"life_inv_methu",
+	"life_inv_phosphorous",
+	"life_inv_ephedra",
+	"life_inv_lithium",
+	"life_inv_moonshine",
+	"life_inv_mashu",
+	"life_inv_corn",
+	"life_inv_sugar",
+	"life_inv_yeast",
+	"life_inv_ziptie",
+	"life_inv_goldbarp",
+	"life_inv_underwatercharge",
+	"life_inv_kidney",
+	"life_inv_scalpel",
+	"life_inv_uraniumu",
+	"life_inv_uraniump"
 ];
 
 //Setup variable inv vars.
@@ -174,30 +223,57 @@ life_licenses =
 	["license_civ_salt","civ"],
 	["license_civ_cement","civ"],
 	["license_med_air","med"],
-	["license_civ_home","civ"]
+	["license_civ_home","civ"],
+	["license_civ_frog","civ"],
+	["license_civ_crystalmeth","civ"],
+	["license_civ_methu","civ"],
+	["license_civ_moonshine","civ"],
+	["license_civ_mashu","civ"],
+	["license_civ_wine","civ"],
+	["license_civ_vigilante","civ"],
+	["license_civ_aerobatic","civ"],
+	["license_civ_uranium","civ"]
 ];
 
 //Setup License Variables
 {missionNamespace setVariable[(_x select 0),false];} foreach life_licenses;
 
+life_prof =
+[
+["Oil_Prof","civ"],
+["Iron_Prof","civ"],
+["Copper_Prof","civ"],
+["Heroin_Prof","civ"],
+["Canabis_Prof","civ"],
+["Cocain_Prof","civ"],
+["Salt_Prof","civ"],
+["Fruit_Prof","civ"],
+["Diamond_Prof","civ"],
+["Rock_Prof","civ"],
+["Sand_Prof","civ"]
+];
+
+
+//Setup License Variables
+{missionNamespace setVariable[(_x select 0),[1,0]];} foreach life_prof;
+
 life_dp_points = ["dp_1","dp_2","dp_3","dp_4","dp_5","dp_6","dp_7","dp_8","dp_9","dp_10","dp_11","dp_12","dp_13","dp_14","dp_15","dp_15","dp_16","dp_17","dp_18","dp_19","dp_20","dp_21","dp_22","dp_23","dp_24","dp_25"];
 //[shortVar,reward]
-life_illegal_items = [["heroinu",1200],["heroinp",2500],["cocaine",1500],["cocainep",3500],["marijuana",2000],["turtle",3000],["blastingcharge",10000],["boltcutter",500]];
-
+life_illegal_items = [["cannabis",300],["lithium",500],["heroinu",400],["heroinp",800],["cocaine",610],["cocainep",1120],["marijuana",720],["turtle",2600],["blastingcharge",10000],["boltcutter",500],["frog",410],["frogp",820],["crystalmeth",2780],["methu",600],["moonshine",2740],["mashu",1120],["phosphorous",500],["ephedra",500],["kidney",6000],["uraniumu",3000],["uraniump",5000]];
 
 /*
 	Sell / buy arrays
 */
-sell_array = 
+sell_array =
 [
 	["apple",50],
-	["heroinu",5050],
-	["heroinp",12050],
+	["heroinu",1850],
+	["heroinp",2650],
 	["salema",45],
 	["ornate",40],
-	["mackerel",175],
-	["tuna",700],
-	["mullet",250],
+	["mackerel",375],
+	["tuna",800],
+	["mullet",350],
 	["catshark",300],
 	["rabbit",65],
 	["oilp",3200],
@@ -206,14 +282,14 @@ sell_array =
 	["coffee",5],
 	["turtlesoup",1000],
 	["donuts",60],
-	["marijuana",6050],
+	["marijuana",2350],
 	["tbacon",25],
 	["lockpick",75],
-	["pickaxe",750],
-	["redgull",200],
+	["pickaxe",225],
+	["redgull",50],
 	["peach",55],
-	["cocaine",4000],
-	["cocainep",8000],
+	["cocaine",3000],
+	["cocainep",5000],
 	["diamond",750],
 	["diamondc",2000],
 	["iron_r",3200],
@@ -223,11 +299,28 @@ sell_array =
 	["fuelF",500],
 	["spikeStrip",1200],
 	["cement",1950],
-	["goldbar",100000]
+	["goldbar",95000],
+	["wine",255],
+	["grapes",70],
+	["frog",1450],
+	["frogp",2150],
+	["crystalmeth",3500],
+	["methu",2200],
+	["moonshine",3400],
+	["mashu",2100],
+	["corn",500],
+	["sugar",500],
+	["yeast",500],
+	["ziptie",50],
+	["goldbarp",15000],
+	["kidney",15000],
+	["scalpel",80],
+	["uraniumu",3000],
+	["uraniump",4000]
 ];
 __CONST__(sell_array,sell_array);
 
-buy_array = 
+buy_array =
 [
 	["apple",65],
 	["rabbit",75],
@@ -245,15 +338,19 @@ buy_array =
 	["tbacon",75],
 	["lockpick",150],
 	["pickaxe",1200],
-	["redgull",1500],
+	["redgull",350],
 	["fuelF",850],
 	["peach",68],
-	["spikeStrip",2500],
-	["blastingcharge",35000],
-	["boltcutter",7500],
+	["spikeStrip",800],
+	["blastingcharge",15000],
+	["boltcutter",600],
 	["defusekit",2500],
-	["storagesmall",75000],
-	["storagebig",150000]
+	["storagesmall",30000],
+	["storagebig",50000],
+	["ziptie",50],
+	["underwatercharge",14000],
+	["kidney",15000],
+	["scalpel",200]
 ];
 __CONST__(buy_array,buy_array);
 
@@ -304,58 +401,72 @@ __CONST__(life_weapon_shop_array,life_weapon_shop_array);
 
 life_garage_prices =
 [
-	["B_QuadBike_01_F",550],
-	["C_Hatchback_01_F",1500],
-	["C_Offroad_01_F", 2500],
-	["B_G_Offroad_01_F",3500],
-	["C_SUV_01_F",5250],
-	["C_Van_01_transport_F",7890],
-	["C_Hatchback_01_sport_F",2350],
+	["B_QuadBike_01_F",541],
+	["C_Hatchback_01_F",2868],
+	["C_Offroad_01_F", 3750],
+	["B_G_Offroad_01_F",3750],
+	["C_SUV_01_F",7012.5],
+	["O_Truck_03_device_F",51000],
+	["C_Van_01_transport_F",7650],
+	["C_Hatchback_01_sport_F",15300],
 	["C_Van_01_fuel_F",4500],
-	["I_Heli_Transport_02_F",100000],
-	["C_Van_01_box_F",9000],
-	["I_Truck_02_transport_F",12000],
-	["I_Truck_02_covered_F",14500],
-	["B_Truck_01_transport_F",25650],
-	["B_Truck_01_box_F", 35000],
-	["O_MRAP_02_F",45000],
-	["B_Heli_Light_01_F",45000],
-	["O_Heli_Light_02_unarmed_F",65000],
+	["I_Heli_Transport_02_F",125000],
+	["C_Van_01_box_F",10200],
+	["I_Truck_02_transport_F",11475],
+	["I_Truck_02_covered_F",16200],
+	["B_Truck_01_transport_F",31875],
+	["B_Truck_01_box_F", 10200],
+	["I_MRAP_03_F",90000],
+	["B_Heli_Light_01_F",60000],
+	["C_Heli_Light_01_civil_F",60000],
+	["O_Heli_Light_02_unarmed_F",90000],
 	["C_Rubberboat",400],
-	["C_Boat_Civil_01_F",4500],
+	["C_Boat_Civil_01_F",1500],
 	["B_Boat_Transport_01_F",450],
-	["C_Boat_Civil_01_police_F",3500],
+	["C_Boat_Civil_01_police_F",2500],
 	["B_Boat_Armed_01_minigun_F",16500],
 	["B_SDV_01_F",25000],
-	["B_MRAP_01_F",7500]
+	["B_G_Offroad_01_armed_F",69862],
+	["B_Heli_Transport_03_unarmed_F",125000],
+	["O_Heli_Transport_04_bench_F",125000],
+	["O_Heli_Transport_04_covered_F",125000]
 ];
 __CONST__(life_garage_prices,life_garage_prices);
 
 life_garage_sell =
 [
-	["B_Quadbike_01_F",950],
-	["C_Hatchback_01_F",4500],
-	["C_Offroad_01_F", 6500],
-	["B_G_Offroad_01_F",3500],
-	["C_SUV_01_F",15000],
-	["C_Van_01_transport_F",25000],
-	["C_Hatchback_01_sport_F",7500],
+	["B_Quadbike_01_F",1000],
+	["C_Hatchback_01_F",1400],
+	["C_Offroad_01_F", 1200],
+	["B_G_Offroad_01_F",1500],
+	["C_SUV_01_F",3500],
+	["O_Truck_03_device_F",120000],
+	["C_Van_01_transport_F",14200],
+	["C_Hatchback_01_sport_F",30000],
 	["C_Van_01_fuel_F",3850],
-	["I_Heli_Transport_02_F",125000],
-	["C_Van_01_box_F",35000],
-	["I_Truck_02_transport_F",49800],
-	["I_Truck_02_covered_F",62000],
-	["B_Truck_01_transport_F",135000],
-	["B_Truck_01_box_F", 150000],
-	["O_MRAP_02_F",65000],
-	["B_Heli_Light_01_F",57000],
-	["O_Heli_Light_02_unarmed_F",72500],
-	["C_Rubberboat",950],
-	["C_Boat_Civil_01_F",6800],
-	["B_Boat_Transport_01_F",850],
-	["C_Boat_Civil_01_police_F",4950],
+	["I_Heli_Transport_02_F",620000],
+	["C_Van_01_box_F",20400],
+	["I_Truck_02_transport_F",228750],
+	["I_Truck_02_covered_F",32400],
+	["B_Truck_01_transport_F",63750],
+	["B_Truck_01_box_F", 20400],
+	["I_MRAP_03_F",612000],
+	["B_Heli_Light_01_F",178500],
+	["C_Heli_Light_01_civil_F",178500],
+	["O_Heli_Light_02_unarmed_F",306000],
+	["C_Rubberboat",800],
+	["C_Boat_Civil_01_F",3000],
+	["B_Boat_Transport_01_F",900],
+	["O_Lifeboat",800],
+	["C_Boat_Civil_01_police_F",5000],
 	["B_Boat_Armed_01_minigun_F",21000],
-	["B_SDV_01_F",45000],
-	["B_MRAP_01_F",10000]
+	["B_SDV_01_F",50000],
+	["C_Kart_01_Blu_F",2000],
+	["C_Kart_01_Fuel_F",2000],
+	["C_Kart_01_Red_F",2000],
+	["C_Kart_01_Vrana_F",2000],
+	["B_Heli_Transport_03_unarmed_F",820000],
+	["O_Heli_Transport_04_bench_F",820000],
+	["O_Heli_Transport_04_covered_F",820000]
 ];
 __CONST__(life_garage_sell,life_garage_sell);

@@ -11,7 +11,11 @@
 #include "veh_shop.hpp"
 #include "shops.hpp"
 #include "ui.hpp"
+
 #include "admin_menu.hpp"
+#include "extended_admin_menu.hpp"
+#include "compensate.hpp"
+
 #include "cell_phone.hpp"
 #include "wanted_list.hpp"
 #include "ticket.hpp"
@@ -24,3 +28,10 @@
 #include "vehicleShop.h"
 #include "settings.h"
 #include "federalReserve.h"
+
+#include "market.hpp"
+#include "wantedadd2.hpp"
+
+#include "goldSafe.h"
+
+#include "prof.hpp"

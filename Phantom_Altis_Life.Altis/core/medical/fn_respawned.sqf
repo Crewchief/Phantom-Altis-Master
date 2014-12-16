@@ -1,9 +1,9 @@
 /*
-	File: fn_respawned.sqf
-	Author: Bryan "Tonic" Boardwine
-	
-	Description:
-	Sets the player up if he/she used the respawn option.
+File: fn_respawned.sqf
+Author: Bryan "Tonic" Boardwine
+
+Description:
+Sets the player up if he/she used the respawn option.
 */
 private["_handle"];
 //Reset our weight and other stuff
@@ -26,7 +26,7 @@ player setVariable["Reviving",nil,TRUE];
 switch(playerSide) do
 {
 	case west: {
-		_handle = [] spawn life_fnc_loadGear;
+		_handle = [] spawn life_fnc_copLoadout;
 	};
 	case civilian: {
 		_handle = [] spawn life_fnc_civLoadout;

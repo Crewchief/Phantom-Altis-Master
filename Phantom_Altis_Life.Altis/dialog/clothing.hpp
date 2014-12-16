@@ -7,7 +7,7 @@ class Life_Clothing {
 	
 	class controlsBackground {
 		class Life_RscTitleBackground:Life_RscText {
-			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+			colorBackground[] = {0,0,0.502,1};
 			idc = -1;
 			x = (1 / 250 / (safezoneW / safezoneH));
 			y = 0;
@@ -72,7 +72,7 @@ class Life_Clothing {
 			x = 0.15 + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.45 - (1 / 25);
 			w = 0.2;
-			h = 0.13;
+			h = 0.2;
 		};
 		
 		class FilterList : Life_RscCombo

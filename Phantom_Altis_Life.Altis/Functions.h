@@ -26,7 +26,7 @@ class SpyGlass
 		class observe{};
 		class payLoad{};
 		class variableCheck{};
-		class initSpy {};
+		class initSpy {preInit=1;};
 	};
 };
 
@@ -49,10 +49,39 @@ class Life_Client_Core
 	{
 		file = "core\admin";
 		class admininfo {};
+		class admininfo_Extended {};
 		class adminid {};
 		class admingetID {};
 		class adminMenu {};
 		class adminQuery {};
+		class adminKick {};
+		class adminBan {};
+		class adminMenu_Extended {};
+		class adminQuery_Extended {};
+		class adminGodMode {};
+		class adminAddMoney {};	
+		class adminSpawnVehicle {};
+		class adminInstaHealth {};
+		class adminTpTo {};
+		class adminTpHere {};
+		class adminRestrain {};
+		class adminUnrestrain {};
+		class adminDebugCon {};
+		class adminSpectate {};
+		class adminCompensate {};
+		class adminFreeze {};
+		class admincargod {};
+		class adminaddweapon {};
+		class adminadditem {};
+		class adminsmoke {};
+		class adminatm {};
+		class revive {};
+		class admingeneral {};
+		class adminclothing {};
+		class adminmarket {};
+		class adminrebelc {};
+		class adminrebw {};
+		class adminkey {};
 	};
 	
 	class Medical_System
@@ -71,6 +100,7 @@ class Life_Client_Core
 		class medicSirenLights {};
 		class medicLights {};
 		class medicSiren {};
+		class kidneysurgery {};
 	};
 	
 	class Actions
@@ -88,6 +118,7 @@ class Life_Client_Core
 		class getDPMission {};
 		class postBail {};
 		class processAction {};
+		class sellOil {};
 		class arrestAction {};
 		class escortAction {};
 		class impoundAction {};
@@ -101,12 +132,21 @@ class Life_Client_Core
 		class pickupItem {};
 		class pickupMoney {};
 		class ticketAction {};
+		class pumpRepair {};
 		class packupSpikes {};
 		class storeVehicle {};
 		class robAction {};
+		class sellTurtle {};
+		class sellGoldBars {};
 		class captureHideout {};
+		class captureplant {};
+		class surrender {};
+		class robShops {}; //Rob Gas Station & Shops Script
 		class gather {};
-		class surrender {}; //surrender action
+		class seizeAction {};
+		class takeOrgans {};
+		class flipaction {};
+		class suicideBomb {};
 	};
 	
 	class Housing
@@ -146,6 +186,8 @@ class Life_Client_Core
 		class weaponShopCfg {};
 		class vehicleWeightCfg {};
 		class houseConfig {};
+		class updateClothing {};
+		class profType {};
 		
 		//Clothing Store Configs
 		class clothing_cop {};
@@ -153,7 +195,6 @@ class Life_Client_Core
 		class clothing_reb {};
 		class clothing_dive {};
 		class clothing_kart {};
-		class clothing_donator {};
 	};
 
 	class Player_Menu
@@ -177,6 +218,8 @@ class Life_Client_Core
 		class updateViewDistance {};
 		class settingsMenu {};
 		class settingsInit {};
+		class wantedadd2 {};
+		class wanted2 {};
 	};
 	
 	class Functions
@@ -193,6 +236,7 @@ class Life_Client_Core
 		class keyHandler {};
 		class dropItems {};
 		class handleDamage {};
+		class handleDowned {}; //Rubbers
 		class numberText {};
 		class handleItem {};
 		class accType {};
@@ -201,7 +245,7 @@ class Life_Client_Core
 		class receiveMoney {};
 		class playerTags {};
 		class clearVehicleAmmo {};
-		class pullOutVeh {};
+		class pulloutVeh {};
 		class nearUnits {};
 		class actionKeyHandler {};
 		class playerCount {};
@@ -218,9 +262,34 @@ class Life_Client_Core
 		class inventoryClosed {};
 		class inventoryOpened {};
 		class isUIDActive {};
-		class saveGear {};
-		class loadGear {};
-		class stripDownPlayer {};
+		class loadGear {}; //Gear Load
+		class saveGear {}; //Gear Save
+		class stripDownPlayer {}; //Removes all items from the players
+		class CarAlarmSound {};
+		class IntroCam {};
+		class paintballloadout {};
+		class loadout1 {};
+		class fatigueReset {};
+		class profSetUp {};
+		class addExp {};
+	};
+	
+	class Market
+	{
+		file = "core\market";
+		class openMarketView;
+		class refreshMarketView;
+		class marketShortView;
+		class marketBuy;
+		class marketSell;
+		class marketGetBuyPrice;
+		class marketGetSellPrice;
+		class marketconfiguration;
+		class marketReset;
+		class marketChange;
+		class marketGetRow;
+		class marketGetPriceRow;
+		class marketSetPriceRow;
 	};
 	
 	class Network
@@ -235,7 +304,7 @@ class Life_Client_Core
 		class soundDevice {};
 		class setFuel {};
 		class setTexture {};
-		class say3D {};
+ 		class say3D {};
 	};
 	
 	class Civilian
@@ -250,7 +319,14 @@ class Life_Client_Core
 		class robPerson {};
 		class removeLicenses {};
 		class demoChargeTimer {};
-		class civLoadout {};
+		class civLoadout {}; //Default Civ Loadout
+		class handleDowned {};
+		class gangMarkers{};
+		class civInteractionMenu {};
+		class waterChargeTimer {};
+		class paintball {};
+		class hasOrgan {};
+		class gatherinteractionmenu {};
 	};
 	
 	class Vehicle
@@ -283,6 +359,8 @@ class Life_Client_Core
 		class ticketPay {};
 		class ticketPrompt {};
 		class copSiren {};
+		class copSiren2 {};
+		class copSiren3 {};
 		class spikeStripEffect {};
 		class radar {};
 		class questionDealer {};
@@ -293,7 +371,11 @@ class Life_Client_Core
 		class repairDoor {};
 		class doorAnimate {};
 		class fedCamDisplay {};
-		class copLoadout {};
+		class copEnter {};
+		class seizeObjects {};
+		class seizePlayerWeapon {};
+		class seizePlayerWeaponAction {};
+		class seizeVehicle{};
 		class ticketPaid {};
 	};
 	
@@ -350,6 +432,7 @@ class Life_Client_Core
 		class blastingCharge {};
 		class defuseKit {};
 		class storageBox {};
+		class underwaterCharge {};
 	};
 	
 	class Dialog_Controls
@@ -375,5 +458,8 @@ class Life_Client_Core
 		class safeFix {};
 		class vehicleGarage {};
 		class gangDeposit {};
+		class safeInvGold {};
+		class safeGold {};
+		class goldTake {};
 	};
 };

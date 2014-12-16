@@ -31,6 +31,8 @@ _escSync = {
 	
 	_abortButton = (findDisplay 49) displayCtrl 104;
 	[] call SOCK_fnc_updateRequest; //call our silent sync.
+	[4] call SOCK_fnc_updatePartial;
+	[8] call SOCK_fnc_updatePartial;
 	
 	if(_this) then {
 		_thread = [] spawn _syncManager;

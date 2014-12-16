@@ -2,7 +2,9 @@
 	File: fn_updateRequest.sqf
 	Author: Tonic
 */
-private["_packet","_array","_flag"];
+private["_packet","_array","_flag","_civPosition"];
+_civPosition = getPos player;
+diag_log format ["%1",_civPosition];
 _packet = [getPlayerUID player,(profileName),playerSide,life_cash,life_atmcash];
 _array = [];
 _flag = switch(playerSide) do {case west: {"cop"}; case civilian: {"civ"}; case independent: {"med"};};
@@ -13,13 +15,27 @@ _flag = switch(playerSide) do {case west: {"cop"}; case civilian: {"civ"}; case 
 	};
 } foreach life_licenses;
 _packet pushBack _array;
-if(playerSide != west) then {
-	[] call life_fnc_saveGear;
-};
+
+[] call life_fnc_saveGear;
 _packet pushBack life_gear;
+
+_profs = [];
+{
+if(_x select 1 == _flag) then
+{
+_data = missionNamespace getVariable (_x select 0);
+_profs pushBack [_x select 0,_data select 0,_data select 1];
+};
+
+} foreach life_prof;
+_packet pushBack _profs;
+
+
 switch (playerSide) do {
 	case civilian: {
 		_packet pushBack life_is_arrested;
+		_packet pushback _civPosition;
+		_packet pushback life_is_alive;
 	};
 };
 

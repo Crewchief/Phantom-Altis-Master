@@ -15,6 +15,46 @@ if((__GETC__(life_medicLevel)) < 1) exitWith {
 	sleep 35;
 };
 
+[] call life_fnc_medicLoadout;
 [] call life_fnc_spawnMenu;
 waitUntil{!isNull (findDisplay 38500)}; //Wait for the spawn selection to be open.
 waitUntil{isNull (findDisplay 38500)}; //Wait for the spawn selection to be done.
+[] spawn
+{
+while {(uniform player) == "U_C_WorkerCoveralls"} do
+    {
+	switch (__GETC__(life_medicLevel)) do 
+		{
+			case 1: {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+			
+			case 2: {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+			
+			case 3: {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+			
+			case 4: {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+			
+			case 5: {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+			
+			default {
+			player setObjectTextureGlobal [0,"images\medic_uniform.jpg"];
+			};
+		};
+    if(backpack player != "") then {(unitBackpack player) setObjectTextureGlobal [0,""];};
+    sleep 30;
+    };
+};
+
+//Show Ranks
+player setVariable["coplevel", __GETC__(life_coplevel), true];
+player setVariable["medlevel", __GETC__(life_medicLevel), true];
+player setVariable["adminlevel", __GETC__(life_adminlevel), true];

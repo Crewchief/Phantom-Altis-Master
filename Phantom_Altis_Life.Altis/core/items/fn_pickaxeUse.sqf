@@ -1,7 +1,7 @@
 /*
 	File: fn_pickaxeUse.sqf
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Main functionality for pickaxe in mining.
 */
@@ -20,23 +20,37 @@ switch (true) do
 	default {_mine = "";};
 };
 //Mine check
-if(_mine == "") exitWith {hint localize "STR_ISTR_Pick_NotNear"};
-if(vehicle player != player) exitWith {hint localize "STR_ISTR_Pick_MineVeh";};
+if(_mine == "") exitWith {hint "You are not near a mine!"};
+if(vehicle player != player) exitWith {hint "You can't mine from inside a car!";};
 
 _diff = [_mine,_val,life_carryWeight,life_maxWeight] call life_fnc_calWeightDiff;
-if(_diff == 0) exitWith {hint localize "STR_NOTF_InvFull"};
+if(_diff == 0) exitWith {hint "Your inventory is full."};
+
 life_action_inUse = true;
-for "_i" from 0 to 2 do
+
+_time = 2;
+_profName = [_gather] call life_fnc_profType;
+if( _profName != "" ) then
+{
+_data = missionNamespace getVariable (_profName);
+_time = ( 3 - (0.25 * (_data select 0)));
+};
+
+while {life_carryWeight < life_maxWeight} do
 {
 	player playMove "AinvPercMstpSnonWnonDnon_Putdown_AmovPercMstpSnonWnonDnon";
 	waitUntil{animationState player != "AinvPercMstpSnonWnonDnon_Putdown_AmovPercMstpSnonWnonDnon";};
-	sleep 2.5;
+	sleep _time;
 };
 
 if(([true,_mine,_diff] call life_fnc_handleInv)) then
 {
 	_itemName = [([_mine,0] call life_fnc_varHandle)] call life_fnc_varToStr;
-	titleText[format[localize "STR_ISTR_Pick_Success",_itemName,_diff],"PLAIN"];
+	titleText[format["You have mined %2 %1",_itemName,_diff],"PLAIN"];
+	if( _profName != "" ) then
+	{
+		[_profName,25] call life_fnc_addExp;
+	};
 };
 
 life_action_inUse = false;

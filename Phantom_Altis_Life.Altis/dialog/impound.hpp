@@ -10,7 +10,7 @@ class Life_impound_menu
 	{
 		class Life_RscTitleBackground : Life_RscText
 		{
-			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+			colorBackground[] = {0,0,0.502,1};
 			idc = -1;
 			x = 0.1;
 			y = 0.2;
@@ -31,7 +31,7 @@ class Life_impound_menu
 		class Title : Life_RscTitle
 		{
 			idc = 2801;
-			text = "$STR_GUI_Garage";
+			text = "Garage";
 			x = 0.1;
 			y = 0.2;
 			w = 0.8;
@@ -41,8 +41,8 @@ class Life_impound_menu
 		class VehicleTitleBox : Life_RscText
 		{
 			idc = -1;
-			text = "$STR_GUI_YourVeh";
-			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+			text = "Your Vehicles";
+			colorBackground[] = {0,0,0.502,1};
 			x = 0.11; y = 0.26;
 			w = 0.3;
 			h = (1 / 25);
@@ -51,8 +51,8 @@ class Life_impound_menu
 		class VehicleInfoHeader : Life_RscText
 		{
 			idc = 2830;
-			text = "$STR_GUI_VehInfo";
-			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+			text = "Vehicle Information";
+			colorBackground[] = {0,0,0.502,1};
 			x = 0.42; y = 0.26;
 			w = 0.46;
 			h = (1 / 25);
@@ -130,7 +130,7 @@ class Life_impound_menu
 		class MainHideText : Life_RscText
 		{
 			idc = 2811;
-			text = "$STR_ANOTF_QueryGarage";
+			text = "Querying Database please wait...";
 			sizeEx = 0.06;
 			x = 0.24; y = 0.5;
 			w = 0.6;

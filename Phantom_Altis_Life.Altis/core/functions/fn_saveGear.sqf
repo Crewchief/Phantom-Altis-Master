@@ -170,7 +170,25 @@ if(count (handGunItems player) > 0) then
     ["life_inv_spikeStrip", life_inv_spikeStrip],
     ["life_inv_defusekit", life_inv_defusekit],
     ["life_inv_storagesmall", life_inv_storagesmall],
-    ["life_inv_storagebig", life_inv_storagebig]
+    ["life_inv_storagebig", life_inv_storagebig],
+	["life_inv_win", life_inv_wine],
+	["life_inv_grapes", life_inv_grapes],
+	["life_inv_frog", life_inv_frog],
+	["life_inv_frogp", life_inv_frogp],
+	["life_inv_crystalmeth", life_inv_crystalmeth],
+	["life_inv_methu", life_inv_methu],
+	["life_inv_phosphorous", life_inv_phosphorous],
+	["life_inv_ephedra", life_inv_ephedra],
+	["life_inv_lithium", life_inv_lithium],
+	["life_inv_moonshine", life_inv_moonshine],
+	["life_inv_mashu", life_inv_corn],
+	["life_inv_sugar", life_inv_sugar],
+	["life_inv_yeast", life_inv_yeast],
+	["life_inv_ziptie", life_inv_ziptie],
+	["life_inv_goldbarp", life_inv_goldbarp],
+	["life_inv_underwatercharge", life_inv_underwatercharge],
+	["life_inv_kidney", life_inv_kidney],
+	["life_inv_scalpel", life_inv_scalpel]
 ];
 
 _return pushBack _uItems;

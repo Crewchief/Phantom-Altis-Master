@@ -87,10 +87,6 @@ class Life_RscListNBox
 	autoScrollSpeed = -1;
 	autoScrollDelay = 5;
 	autoScrollRewind = 0;
-	rowHeight = 0.04;
-	drawSideArrows = 0;
-	idcLeft = -1;
-	idcRight = -1;
 	class ListScrollBar: Life_RscScrollBar{};
 	class ScrollBar: Life_RscScrollBar{};
 };
@@ -232,7 +228,7 @@ class Life_RscButton
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	colorText[] = {1,1,1,1.0};
 	colorDisabled[] = {0.4,0.4,0.4,1};
-	colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",0.7};
+	colorBackground[] = {0,0,0.502,1};
 	colorBackgroundActive[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1};
 	colorBackgroundDisabled[] = {0.95,0.95,0.95,1};
 	offsetX = 0.003;
@@ -270,7 +266,7 @@ class Life_RscShortcutButton {
 	colorFocused[] = {1,1,1,1.0};
 	color2[] = {0.95,0.95,0.95,1};
 	colorDisabled[] = {1,1,1,0.25};
-	colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1};
+	colorBackground[] = {0,0,0.502,1};
 	colorBackgroundFocused[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1};
 	colorBackground2[] = {1,1,1,1};
 	animTextureDefault = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
@@ -445,21 +441,6 @@ class Life_RscShortcutButtonMain : Life_RscShortcutButton {
 		color = "#E5E5E5";
 		align = "false";
 	};
-};
-
-class Life_RscButtonInvisible : Life_RscButtonMenu {
-	animTextureNormal = "#(argb,8,8,3)color(1,1,1,0)";
-	animTextureDisabled = "#(argb,8,8,3)color(1,1,1,0)";
-	animTextureOver = "#(argb,8,8,3)color(1,1,1,0)";
-	animTextureFocused = "#(argb,8,8,3)color(1,1,1,0)";
-	animTexturePressed = "#(argb,8,8,3)color(1,1,1,0)";
-	animTextureDefault = "#(argb,8,8,3)color(1,1,1,0)";
-	colorBackground[] = {0, 0, 0, 0};
-	colorBackground2[] = {1, 1, 1, 0};
-	color[] = {1, 1, 1, 0};
-	color2[] = {1, 1, 1, 0};
-	colorText[] = {1, 1, 1, 0};
-	colorDisabled[] = {1, 1, 1, 0};
 };
 
 class Life_RscCheckbox {
@@ -1104,3 +1085,4 @@ class Life_RscToolbox {
 	font = "PuristaMedium";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
 };
+

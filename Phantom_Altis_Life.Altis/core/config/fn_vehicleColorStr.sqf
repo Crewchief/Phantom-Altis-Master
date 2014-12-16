@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_vehicleColorStr.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -12,6 +13,8 @@ _color = "";
 
 switch (_vehicle) do
 {
+
+	
 	case "C_Offroad_01_F" :
 	{
 		switch (_index) do
@@ -22,10 +25,9 @@ switch (_vehicle) do
 			case 3: {_color = "Blue";};
 			case 4: {_color = "Dark Red";};
 			case 5: {_color = "Blue / White"};
-			case 6: {_color = "Black"};
-			case 7: {_color = "Black"};
-			case 8: {_color = "Taxi"};
-			case 9: {_color = "SWAT"};
+			//case 6: {_color = "Black"};
+			case 6: {_color = "Police"};
+			case 7: {_color = "EMS"};
 		};
 	};
 	
@@ -55,6 +57,10 @@ switch (_vehicle) do
 			case 4: {_color = "Tan"};
 			case 5: {_color = "Green"};
 			case 6: {_color = "Cop"};
+			if(__GETC__(life_donatorlvl) > 3) then
+			{
+				case 7: {_color = "Monster"};
+			};
 		};
 	};
 	
@@ -67,8 +73,7 @@ switch (_vehicle) do
 			case 2: {_color = "Silver";};
 			case 3: {_color = "Orange";};
 			case 4: {_color = "Cop";};
-			case 5: {_color = "Black/White"};
-			case 6: {_color = "N/A"};
+			case 5: {_color = "EMS";};
 		};
 	};
 	
@@ -119,7 +124,7 @@ switch (_vehicle) do
 	{
 		switch (_index) do
 		{
-			case 0: {_color = "Sheriff"};
+			case 0: {_color = "Police"};
 			case 1: {_color = "Black"};
 			case 2: {_color = "Civ Blue"};
 			case 3: {_color = "Civ Red"};
@@ -133,8 +138,36 @@ switch (_vehicle) do
 			case 11: {_color = "Vrana"};
 			case 12: {_color = "Waves Blue"};
 			case 13: {_color = "Rebel Digital"};
-			case 14: {_color = "EMS White"};
-			case 15: {_color = "Black/White"};
+			case 14: {_color = "EMS"};
+			if(license_civ_aerobatic) then
+			{
+			case 15: {_color = "Redbull"};
+			};
+		};
+	};
+	
+	case "C_Heli_Light_01_civil_F":
+	{
+		switch (_index) do
+		{
+			case 0: {_color = "Blueline"};
+			case 1: {_color = "Digital"};
+			case 2: {_color = "Elliptical"};
+			case 3: {_color = "Furious"};
+			case 4: {_color = "Graywatcher"};
+			case 5: {_color = "Jeans"};
+			case 6: {_color = "Light"};
+			case 7: {_color = "Shadow"};
+			case 8: {_color = "Speedy"};
+			case 9: {_color = "Sunset"};
+			case 10: {_color = "Vrana"};
+			case 11: {_color = "Wasp"};
+			case 12: {_color = "Wave"};
+			case 13: {_color = "Sheriff"};
+			if(license_civ_aerobatic) then
+			{
+			case 14: {_color = "Redbull"};
+			};
 		};
 	};
 	
@@ -146,7 +179,8 @@ switch (_vehicle) do
 			case 1: {_color = "White / Blue"};
 			case 2: {_color = "Digi Green"};
 			case 3: {_color = "Desert Digi"};
-			case 4: {_color = "EMS White"};
+			case 4: {_color = "EMS"};
+			case 5: {_color = "EMS"};
 		};
 	};
 	
@@ -154,8 +188,8 @@ switch (_vehicle) do
 	{
 		switch (_index) do
 		{
-			case 0: {_color = "Black/White"};
-			case 1: {_color = "SWAT"};
+			case 0: {_color = "Regular"};
+			case 1: {_color = "Black"};
 		};
 	};
 	
@@ -164,7 +198,7 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Orange"};
-			case 1: {_color = "Black"};
+			case 1: {_color = "EMS"};
 		};
 	};
 	
@@ -190,6 +224,18 @@ switch (_vehicle) do
 		switch (_index) do
 		{
 			case 0: {_color = "Black"};
+		};
+	};
+	
+	case "I_Heli_light_03_unarmed_F":
+	{
+		switch (_index) do
+		{
+			case 0: {_color = "POLICE"};
+			if(license_cop_swat) then
+			{
+			case 1: {_color = "SWAT"};
+			};
 		};
 	};
 	

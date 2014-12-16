@@ -22,20 +22,16 @@ _badVariables = ["JxMxE_hide","JME_Keybinds","JME_has_yet_to_fuck_this_shit","JM
 	"aKNoEscort","aKEscort","aKtroll","aKTPall","aKUnrestrain","aKNoEscortMe","aKNoTaze","aKJailplayer","aKLisense","riasgremory_titans_shit_reold","Tonic_merde","jaimepaslepoisin_HLEAL","TTTT_IIII___TTTTTTT_RAP_FR","TTTT_IIII___TTTTTTT_REPGA",
 	"TTTT_IIII___TTTTTTT_REPGAs","jaimepaslepoisin_HLEAL","Root_Main4","Root_Pistol4","Root_Rifle4","Root_Machinegun4","Root_Sniper4","Root_Launcher4","Root_Attachement4"
 ];
-
 _checkThread = {
 	{
-		_key = _x;
-		{
-			_var = _x getVariable _key;
-			if(!isNil "_var") exitWith {
-				_x setVariable[_key,nil];
-				[[profileName,getPlayerUID player,_key],"SPY_fnc_cookieJar",false,false] spawn life_fnc_MP;
-				[[profileName,format["Variable: %1",_key]],"SPY_fnc_notifyAdmins",true,false] spawn life_fnc_MP;
-				sleep 0.5;
-				["SpyGlass",false,false] call compile PreProcessFileLineNumbers "\a3\functions_f\Misc\fn_endMission.sqf";
-			};
-		} forEach [missionNamespace, uiNamespace, profileNamespace, parsingNamespace];
+		_var = missionNamespace getVariable _x;
+		if(!isNil "_var") then {
+			missionNamespace setVariable[_x,nil];
+			[[profileName,getPlayerUID player,_x],"SPY_fnc_cookieJar",false,false] spawn life_fnc_MP;
+			[[profileName,format["Variable: %1",_x]],"SPY_fnc_notifyAdmins",true,false] spawn life_fnc_MP;
+			sleep 0.5;
+			["SpyGlass",false,false] call BIS_fnc_endMission;
+		};
 	} foreach _this;
 };
 

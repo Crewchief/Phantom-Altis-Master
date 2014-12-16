@@ -1,23 +1,15 @@
 /*
 	File: fn_onPlayerKilled.sqf
-	Author: Bryan "Tonic" Boardwine and Clueless - Zac
+	Author: Bryan "Tonic" Boardwine
 	
 	Description:
 	When the player dies collect various information about that player
 	and pull up the death dialog / camera functionality.
 */
-private["_unit","_pos","_weapon","_killer","_killerpos"];
+private["_unit","_killer"];
 disableSerialization;
 _unit = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 _killer = [_this,1,ObjNull,[ObjNull]] call BIS_fnc_param;
-
-_pos = getPos _unit;
-_killerpos = getPos _killer;
-_weapon = currentWeapon _killer;
-
-//Clueless - Zac
-//LOG KILL.  Dead,PosX,PosY,Killer,PosX,PosY,Weapon
-diag_log format ["KILL_OCCURRED: %1,%2,%3,%4,%5,%6,%7",_unit, _pos select 0, _pos select 1, _killer, _killerpos select 0, _killerpos select 1, _weapon];
 
 //Set some vars
 _unit setVariable["Revive",FALSE,TRUE]; //Set the corpse to a revivable state.
@@ -26,6 +18,9 @@ _unit setVariable["restrained",FALSE,TRUE];
 _unit setVariable["Escorting",FALSE,TRUE];
 _unit setVariable["transporting",FALSE,TRUE]; //Why the fuck do I have this? Is it used?
 _unit setVariable["steam64id",(getPlayerUID player),true]; //Set the UID.
+_unit setVariable["missingOrgan",FALSE,TRUE]; //I DONT KNOW WHY SOMETIMES THEY ARE CAPS or not
+_unit setVariable["hasOrgan",FALSE,TRUE]; 
+
 
 //Setup our camera view
 life_deathCamera  = "CAMERA" camCreate (getPosATL _unit);
@@ -84,8 +79,12 @@ if(!isNull _killer && {_killer != _unit} && {side _killer != west} && {alive _ki
 };
 
 //Killed by cop stuff...
-if(side _killer == west && playerSide != west) then {
-	life_copRecieve = _killer;
+if(side _killer == west) then {
+
+	if(!isNull _killer && {_killer != _unit}) then {
+		[[player,_killer,true],"life_fnc_wantedBounty",false,false] spawn life_fnc_MP;
+		[[getPlayerUID player],"life_fnc_wantedRemove",false,false] spawn life_fnc_MP;
+	};
 	//Did I rob the federal reserve?
 	if(!life_use_atm && {life_cash > 0}) then {
 		[format[localize "STR_Cop_RobberDead",[life_cash] call life_fnc_numberText],"life_fnc_broadcast",true,false] spawn life_fnc_MP;
@@ -104,6 +103,62 @@ life_hunger = 100;
 life_thirst = 100;
 life_carryWeight = 0;
 life_cash = 0;
+if(playerSide == west) then
+{
+	removeAllContainers _unit;
+	
+	_unit removeWeapon (primaryWeapon _unit);
+	_unit removeWeapon (handGunWeapon _unit);
+	removeAllWeapons _unit;
+
+	for "_i" from 0 to 5 do {
+
+	{
+	deleteVehicle _x;
+	} forEach nearestObjects [getPos _unit, ["GroundWeaponHolder"], 5];
+	{
+	deleteVehicle _x;
+	} forEach nearestObjects [getPos _unit, ["WeaponHolderSimulated"], 5];
+
+	sleep 1;
+	};
+};
+if(playerSide == independent) then
+{
+	removeAllContainers _unit;
+	removeUniform _unit;
+	removeBackpack _unit;
+	removeVest _unit;
+	removeHeadgear _unit;
+	
+	_unit removeWeapon (primaryWeapon _unit);
+	_unit removeWeapon (handGunWeapon _unit);
+	removeAllWeapons _unit;
+
+	for "_i" from 0 to 5 do {
+
+
+
+
+	{
+	deleteVehicle _x;
+	} forEach nearestObjects [getPos _unit, ["GroundWeaponHolder"], 5];
+
+
+
+	{
+	deleteVehicle _x;
+	} forEach nearestObjects [getPos _unit, ["WeaponHolderSimulated"], 5];
+
+	sleep 1;
+
+	};
+};
+
+if(playerSide == civilian) then
+{
+	life_is_alive = false;
+};
 
 [] call life_fnc_hudUpdate; //Get our HUD updated.
 [[player,life_sidechat,playerSide],"TON_fnc_managesc",false,false] spawn life_fnc_MP;

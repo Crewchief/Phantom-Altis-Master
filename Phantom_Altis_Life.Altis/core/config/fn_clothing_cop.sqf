@@ -19,48 +19,42 @@ switch (_filter) do
 	//Uniforms
 	case 0:
 	{
-		_ret pushBack ["U_Rangemaster","Cop Uniform",25];
-		if(__GETC__(life_coplevel) > 1) then
-		{
-			
-		};
-		if(__GETC__(life_coplevel) > 2) then
-		{
-			_ret pushBack ["U_B_CombatUniform_mcam_vest","Standard Sergeant Uniform",150];
-			_ret pushBack ["U_B_CombatUniform_mcam_tshirt","Sergeant Fatigues",150];
-			_ret pushBack ["U_B_survival_uniform","Water Operations",200];
-		};
-		if(__GETC__(life_coplevel) > 3) then
-		{
-			_ret pushBack ["U_B_CTRG_1","Staff Sergeant Uniform",150];
-			_ret pushBack ["U_B_GhillieSuit","Ghillie suit(for sniper ops only)",200];
-			_ret pushBack ["U_B_PilotCoveralls","Pilot Uniform",200];
-		};
+		_ret set[count _ret,["U_Rangemaster","Cop Uniform",25 * life_donDis]];
+		_ret set[count _ret,["U_B_Wetsuit","Wetsuit",1250 * life_donDis]];
+		
 		if(__GETC__(life_coplevel) > 4) then
 		{
-			_ret pushBack ["U_B_CTRG_3","Police Command Uniform",200];
-			_ret pushBack ["U_B_SpecopsUniform_sgg","Police Command Fatigues",150];
+			_ret set[count _ret,["U_B_CombatUniform_mcam","SWAT Uniform",550 * life_donDis]];
 		};
+		if (license_cop_swat) then
+		{
+			_ret set[count _ret,["U_B_CTRG_3","SWAT 2 Uniform",550 * life_donDis]];
+		};
+		[] call life_fnc_updateClothing; //Avitus
 	};
 	
 	//Hats
 	case 1:
 	{
-		_ret pushBack ["H_Cap_blk","Police Cap",25];
-		if(__GETC__(life_coplevel) > 1) then
-		{
-			_ret pushBack ["H_CrewHelmetHeli_B","Gas Mask",100];
-		};
-		
+		_ret =
+		[
+			["H_MilCap_blue","Cop Blue Hat",500 * life_donDis],
+			["H_MilCap_gry","Cop Grey Hat",500 * life_donDis]
+		];
+		/*
 		if(__GETC__(life_coplevel) > 2) then
 		{
-			_ret pushBack ["H_Booniehat_tan","Boonie Hat",50];
-			_ret pushBack ["H_HelmetB_snakeskin","Combat Helmet",150];
+			_ret set[count _ret,["H_Beret_blk_POLICE","Beret",500 * life_donDis]];
 		};
-		
-		if(__GETC__(life_coplevel) > 3) then
+		*/
+		if(__GETC__(life_coplevel) > 4) then
 		{
-			_ret pushBack ["H_PilotHelmetHeli_B","Heli Pilot",100];
+			_ret set[count _ret,["H_Beret_Colonel","Upgraded Beret",500 * life_donDis]];
+		};
+		if(__GETC__(life_coplevel) > 5) then
+		{
+			_ret set[count _ret,["H_PilotHelmetHeli_B","Captain Hat",500 * life_donDis]];
+			_ret set[count _ret,["H_CrewHelmetHeli_B","Alternative Captain Hat",500 * life_donDis]];
 		};
 	};
 	
@@ -69,34 +63,35 @@ switch (_filter) do
 	{
 		_ret = 
 		[
-			["G_Shades_Black",nil,25],
-			["G_Shades_Blue",nil,20],
-			["G_Sport_Blackred",nil,20],
-			["G_Sport_Checkered",nil,20],
-			["G_Sport_Blackyellow",nil,20],
-			["G_Sport_BlackWhite",nil,20],
-			["G_Aviator",nil,75],
-			["G_Squares",nil,10],
-			["G_Lowprofile",nil,30],
-			["G_Combat",nil,55]
+			["G_Shades_Black","Black Shades",500 * life_donDis],
+			["G_Shades_Blue","Blue Shades",500 * life_donDis],
+			["G_Sport_Blackred","Black Red Shades",500 * life_donDis],
+			["G_Sport_Checkered","Checkered Shades",500 * life_donDis],
+			["G_Sport_Blackyellow","Black Yellow Shades",500 * life_donDis],
+			["G_Sport_BlackWhite","Black White Shades",500 * life_donDis],
+			["G_Aviator","Aviators",500 * life_donDis],
+			["G_Squares","Square Glasses",500 * life_donDis],
+			["G_Lowprofile","Lowprofile Glasses",500 * life_donDis],
+			["G_Combat","Combat Goggles",500 * life_donDis],
+			["G_Diving",nil,500 * life_donDis]
 		];
 	};
 	
 	//Vest
 	case 3:
 	{
-		_ret pushBack ["V_Rangemaster_belt",nil,800];
-		if(__GETC__(life_coplevel) > 1) then
-		{
-			_ret pushBack ["V_PlateCarrier2_rgr",nil,1500];
-			_ret pushBack ["V_PlateCarrierGL_rgr",nil,1500];
-			_ret pushBack ["V_TacVest_blk_POLICE",nil,1500];
-			
-		};
+		_ret =
+		[
+			["V_RebreatherB","Rebreather", 500 * life_donDis],
+			["V_TacVest_blk_POLICE","Cop Tactical Vest",500 * life_donDis]
+		];
 		if(__GETC__(life_coplevel) > 2) then
 		{
-			_ret pushBack ["V_TacVestIR_blk",nil,1750];
-			_ret pushBack ["V_RebreatherB",nil,1500];
+			_ret set[count _ret,["V_TacVest_blk","Main Cop Tactical Vest",500 * life_donDis]];
+		};
+		if(__GETC__(life_coplevel) > 4) then
+		{
+			_ret set[count _ret,["V_PlateCarrier1_blk","Improved Tactical Vest",500 * life_donDis]];
 		};
 	};
 	
@@ -105,12 +100,12 @@ switch (_filter) do
 	{
 		_ret =
 		[
-			["B_Kitbag_cbr",nil,800],
-			["B_FieldPack_cbr",nil,500],
-			["B_AssaultPack_cbr",nil,700],
-			["B_Bergen_sgg",nil,2500],
-			["B_Carryall_cbr",nil,3500]
+			["B_Bergen_blk","Black Bergen Backpack",500 * life_donDis]
 		];
+		if(__GETC__(life_coplevel) > 2) then
+		{
+			_ret set[count _ret,["B_Kitbag_mcamo_Eng","Improved Backpack",500 * life_donDis]];
+		};
 	};
 };
 

@@ -1,3 +1,4 @@
+#include <macro.h>
 /*
 	File: fn_vehicleColorCfg.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -12,6 +13,7 @@ _ret = [];
 
 switch (_vehicle) do
 {
+
 	case "I_Heli_Transport_02_F":
 	{
 		_path = "\a3\air_f_beta\Heli_Transport_02\Data\Skins\";
@@ -33,7 +35,9 @@ switch (_vehicle) do
 			[_path + "hatchback_01_ext_sport04_co.paa","civ"],
 			[_path + "hatchback_01_ext_sport05_co.paa","civ"],
 			[_path + "hatchback_01_ext_sport06_co.paa","civ"],
-			["#(ai,64,64,1)Fresnel(1.3,7)","cop"]
+			["images\police_hatchback.jpg","cop"],
+			["images\civ_hatchback_sport.jpg","civ"]
+
 		];
 	};
 		
@@ -47,10 +51,8 @@ switch (_vehicle) do
 			["\A3\soft_F\Offroad_01\Data\offroad_01_ext_BASE03_CO.paa","civ"],
 			["\A3\soft_F\Offroad_01\Data\offroad_01_ext_BASE04_CO.paa","civ"],
 			["\A3\soft_F\Offroad_01\Data\offroad_01_ext_BASE05_CO.paa","civ"],
-			["#(ai,64,64,1)Fresnel(0.3,3)","fed"],
-			["#(ai,64,64,1)Fresnel(1.3,7)","cop"],
-			["#(argb,8,8,3)color(0.6,0.3,0.01,1)","civ"],
-			["textures\SWAT\swat_offroad.paa","cop"]
+			["images\police_offroad.jpg","cop"],
+			["images\medic_offroad.jpg","med"]
 		];
 	};
 	
@@ -74,11 +76,11 @@ switch (_vehicle) do
 		_ret =
 		[
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_co.paa","civ"],
-			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_02_co.paa","cop"],
+			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_02_co.paa","civ"],
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_03_co.paa","civ"],
 			["\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_04_co.paa","civ"],
-			["textures\Copvehicletextures\police_suv.paa","cop"],
-			["#(ai,64,64,1)Fresnel(1.3,7)","fed"]
+			["images\police_suv.jpg","cop"],
+			["images\suv_medic.jpg","med"]
 		];
 	};
 	
@@ -120,11 +122,11 @@ switch (_vehicle) do
 	{
 		_ret = 
 		[
-			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sheriff_co.paa","cop"],
+			["images\police_heli.jpg","cop"],
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa","fed"],
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_blue_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_co.paa","civ"],
-			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_indp_co.paa","donate"],
+			["\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_indp_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_blueline_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_elliptical_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_furious_co.paa","civ"],
@@ -134,8 +136,29 @@ switch (_vehicle) do
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_vrana_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wave_co.paa","civ"],
 			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","reb"],
-			["#(argb,8,8,3)color(1,1,1,0.8)","med"],
-			["textures\Copvehicletextures\police_heli.paa","cop"]
+			["images\heli_medical.jpg","med"],
+			["images\heli_redbull.jpg","civ"]
+		];
+	};
+	
+	case "C_Heli_Light_01_civil_F":
+	{
+		_ret = [
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_blueline_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa","reb"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_elliptical_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_furious_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_graywatcher_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_jeans_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_light_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_shadow_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_speedy_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sunset_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_vrana_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wasp_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wave_co.paa","civ"],
+			["\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sheriff_co.paa","cop"],
+			["images\heli_redbull.jpg","civ"]
 		];
 	};
 	
@@ -147,6 +170,7 @@ switch (_vehicle) do
 			["\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_civilian_co.paa","civ"],
 			["\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_indp_co.paa","donate"],
 			["\a3\air_f\Heli_Light_02\Data\heli_light_02_ext_opfor_co.paa","reb"],
+			["images\heli2_med.jpg","med"],
 			["#(argb,8,8,3)color(1,1,1,0.8)","med"]
 		];
 	};
@@ -155,8 +179,8 @@ switch (_vehicle) do
 	{
 		_ret = 
 		[
-			["textures\cop_hunter.paa","cop"],
-			["textures\SWAT\swat_hunter_1.PAA","cop","textures\SWAT\swat_hunter_2.PAA"]
+			["images\police_hunter_01BOLD.jpg","cop","images\police_hunter_02BOLD.jpg"],
+			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","fed"]
 		];
 	};
 	
@@ -165,6 +189,7 @@ switch (_vehicle) do
 		_ret = 
 		[
 			["\A3\Soft_F_Beta\Truck_02\data\truck_02_kab_co.paa","civ","\a3\soft_f_beta\Truck_02\data\truck_02_kuz_co.paa"],
+			["images\zamak_medical1.jpg","med","images\zamak_medical2.jpg"],
 			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","fed"]
 		];
 	};
@@ -191,6 +216,21 @@ switch (_vehicle) do
 		_ret = 
 		[
 			["#(argb,8,8,3)color(0.05,0.05,0.05,1)","fed"]
+		];
+	};
+	case "I_Heli_light_03_unarmed_F":
+	{
+		_ret = 
+		[
+			["images\hellcat_police.jpg","cop"],
+			["images\hellcat_swat.jpg","cop"]
+		];
+	};
+	case "B_Heli_Transport_01_F":
+	{
+		_ret = 
+		[
+			["images\police_ghosthawk1.jpg","cop","images\police_ghosthawk2.jpg"]
 		];
 	};
 };

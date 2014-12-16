@@ -5,6 +5,7 @@
 //Control Macros
 #define getControl(disp,ctrl) ((findDisplay ##disp) displayCtrl ##ctrl)
 #define getSelData(ctrl) (lbData[##ctrl,(lbCurSel ##ctrl)])
+#define getSelData(ctrl) (lbData[##ctrl,(lbCurSel ##ctrl)])
 
 //Player based quick macros
 #define grpPlayer group player

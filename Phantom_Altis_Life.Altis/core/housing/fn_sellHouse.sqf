@@ -1,7 +1,7 @@
 #include <macro.h>
 /*
 	Author: Bryan "Tonic" Boardwine
-	
+
 	Description:
 	Sells the house?
 */
@@ -11,7 +11,6 @@ _uid = getPlayerUID player;
 
 if(isNull _house) exitWith {};
 if(!(_house isKindOf "House_F")) exitWith {};
-if(isNil {_house getVariable "house_owner"}) exitWith {hint "There is no owner for this house."};
 closeDialog 0;
 
 _houseCfg = [(typeOf _house)] call life_fnc_houseConfig;
@@ -31,14 +30,14 @@ if(_action) then {
 	_house setVariable["containers",nil,true];
 	deleteMarkerLocal format["house_%1",_house getVariable "uid"];
 	_house setVariable["uid",nil,true];
-	
+
 	life_atmcash = life_atmcash + (round((_houseCfg select 0)/2));
 	_index = life_vehicles find _house;
 	if(_index != -1) then {
 		life_vehicles set[_index,-1];
 		life_vehicles = life_vehicles - [-1];
 	};
-	
+
 	_index = [str(getPosATL _house),life_houses] call TON_fnc_index;
 	if(_index != -1) then {
 		life_houses set[_index,-1];

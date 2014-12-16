@@ -65,11 +65,23 @@ switch (playerSide) do
 		_handle = [] spawn life_fnc_initMedic;
 		waitUntil {scriptDone _handle};
 	};
+	
+	case sideLogic:
+    {
+		if(__GETC__(life_adminlevel) > 2) then
+		{
+			_handle = [] spawn life_fnc_initZeus;
+			waitUntil {scriptDone _handle};
+		};
+    };
 };
 
 player setVariable["restrained",false,true];
 player setVariable["Escorting",false,true];
 player setVariable["transporting",false,true];
+player setVariable["missingOrgan",false,true];//sets variables to false on start
+player setVariable["hasOrgan",false,true];
+
 diag_log "Past Settings Init";
 [] execFSM "core\fsm\client.fsm";
 diag_log "Executing client.fsm";
@@ -89,6 +101,18 @@ LIFE_ID_RevealObjects = ["LIFE_RevealObjects","onEachFrame","life_fnc_revealObje
 [] call life_fnc_settingsInit;
 player setVariable["steam64ID",getPlayerUID player];
 player setVariable["realname",profileName,true];
+
+
+switch(__GETC__(life_donator)) do
+{
+	case 0: {life_donDis = 1};
+	case 1: {life_donDis = 0.75};
+	case 2: {life_donDis = 0.70};
+	case 3: {life_donDis = 0.65};
+	case 4: {life_donDis = 0.60};
+	case 5: {life_donDis = 0.55};
+};
+
 life_fnc_moveIn = compileFinal
 "
 	player moveInCargo (_this select 0);
@@ -102,7 +126,13 @@ life_fnc_garageRefund = compileFinal
 	life_atmcash = life_atmcash + _price;
 ";
 
+
 [] execVM "core\init_survival.sqf";
+[] call life_fnc_setupActions;
+[] call life_fnc_updateClothing;
 
 __CONST__(life_paycheck,life_paycheck); //Make the paycheck static.
+
+if(playerSide != west) then {
 player enableFatigue (__GETC__(life_enableFatigue));
+};

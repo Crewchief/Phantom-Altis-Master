@@ -9,7 +9,9 @@ private["_handle"];
 _handle = [] spawn life_fnc_stripDownPlayer;
 waitUntil {scriptDone _handle};
 
-player addUniform "U_Rangemaster";
+player forceaddUniform "U_C_WorkerCoveralls";
+player addItem "B_OutdoorPack_tan";
+player assignItem "B_OutdoorPack_tan";
 player addItem "FirstAidKit";
 player addItem "FirstAidKit";
 player addItem "ItemMap";
@@ -19,6 +21,6 @@ player assignItem "ItemCompass";
 player addItem "ItemWatch";
 player assignItem "ItemWatch";
 
-[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;
+[[player,0,"images\medic_uniform.jpg"],"life_fnc_setTexture",true,false] spawn life_fnc_MP;
 
 [] call life_fnc_saveGear;

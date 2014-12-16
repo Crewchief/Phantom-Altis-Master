@@ -6,7 +6,7 @@
 	Description:
 	Update and fill the virtual shop menu.
 */
-private["_display","_item_list","_gear_list","_shop_data","_name","_price"];
+private["_display","_item_list","_gear_list","_shop_data","_name","_price","_marketprice"];
 disableSerialization;
 
 //Setup control vars.
@@ -26,6 +26,14 @@ ctrlSetText[2403,format["%1", _shop_data select 0]];
 	_index = [_x,__GETC__(buy_array)] call TON_fnc_index;
 	if(_index != -1) then
 	{
+		_price = ((__GETC__(buy_array) select _index) select 1) * life_donDis;
+		
+		_marketprice = [_x] call life_fnc_marketGetBuyPrice;
+		if(_marketprice != -1) then
+		{
+			_price = _marketprice;
+		};
+	
 		_price = (__GETC__(buy_array) select _index) select 1;
 		_item_list lbAdd format["%1  ($%2)",_name,[_price] call life_fnc_numberText];
 		_item_list lbSetData [(lbSize _item_list)-1,_x];

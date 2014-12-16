@@ -15,8 +15,8 @@ _nearVehicles = nearestObjects [getMarkerPos life_chopShop,["Car","Truck"],25];
 _vehicle = _nearVehicles select _vehicle;
 if(isNull _vehicle) exitWith {};
 
-hint localize "STR_Shop_ChopShopSelling";
+hint "Selling vehicle please wait....";
 life_action_inUse = true;
 _price2 = life_cash + _price;
-[[player,_vehicle,_price,_price2],"TON_fnc_chopShopSell",false,false] spawn life_fnc_MP;
+[[player,_vehicle,_price,_price2],"TON_fnc_chopShopSell",false,false] spawn TON_fnc_index;
 closeDialog 0;

@@ -39,7 +39,17 @@ switch (_mode) do
 			case "copper": {_var = "license_civ_copper"};
 			case "cement": {_var = "license_civ_cement"};
 			case "mair": {_var = "license_med_air"};
-			case "home": {_var = "license_civ_home"};
+			case "home": {_var = "license_civ_home"}; //home owners license test -Avitus
+			case "frog": {_var = "license_civ_frog"};
+			case "crystalmeth": {_var = "license_civ_crystalmeth"};
+			case "methu": {_var = "license_civ_methu"};
+			case "moonshine": {_var = "license_civ_moonshine"};
+			case "mashu": {_var = "license_civ_mashu"};
+			case "wine": {_var = "license_civ_wine"};
+			case "vigilante": {_var = "license_civ_vigilante"};
+			case "aerobatic": {_var = "license_civ_aerobatic"};
+			case "uranium": {_var = "license_civ_uranium"};
+			
 			default {_var = ""};
 		};
 	};
@@ -71,7 +81,16 @@ switch (_mode) do
 			case "license_civ_copper": {_var = "copper"};
 			case "license_civ_cement": {_var = "cement"};
 			case "license_med_air": {_var = "mair"};
-			case "license_civ_home": {_var = "home"};
+			case "license_civ_home": {_var = "home"};  //home Owners license test -Avitus
+			case "license_civ_frog": {_var = "frog"};
+			case "license_civ_crystalmeth": {_var = "crystalmeth"};
+			case "license_civ_methu": {_var = "methu"};
+			case "license_civ_moonshine": {_var = "moonshine"};
+			case "license_civ_mashu": {_var = "mashu"};
+			case "license_civ_wine": {_var = "wine"};
+			case "license_civ_vigilante": {_var = "vigilante"};
+			case "license_civ_aerobatic": {_var = "Aerobatic"};
+			case "license_civ_uranium": {_var = "Uranium"};
 			default {_var = ""};
 		};
 	};

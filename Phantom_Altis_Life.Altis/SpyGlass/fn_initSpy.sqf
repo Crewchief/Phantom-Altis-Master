@@ -42,7 +42,6 @@ __CONST__(JJJJ_MMMM___EEEEEEE_SPAWN_WEAPON,"No");
 			};
 		};
 	};
-
 	copyToClipboard str(_cfgPatches);
 	
 	i.e

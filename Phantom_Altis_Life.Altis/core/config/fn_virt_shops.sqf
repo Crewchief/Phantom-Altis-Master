@@ -10,13 +10,12 @@ _shop = _this select 0;
 
 switch (_shop) do
 {
-	case "market": {["Altis Market",["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","boltcutter","storagesmall","storagebig"]]};
-	case "donor": {["PGC Donor Market",["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","strawberry","banana","boltcutter","scalpel","boltcutter","blastingcharge"]]};
-	case "rebel": {["Rebel Market",["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","boltcutter","blastingcharge"]]};
-	case "gang": {["Gang Market", ["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","blastingcharge","boltcutter"]]};
-	case "wongs": {["Wong's Food Cart",["turtlesoup","turtle"]]};
+	case "market": {["Altis Market",["water","rabbit","apple","redgull","tbacon","pickaxe","underwatercharge","fuelF","peach","grapes"]]};
+	case "donator": {["Furniture Store",["storagesmall","storagebig"]]};
+	case "rebel": {["Rebel Market",["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","ziptie","boltcutter","blastingcharge","underwatercharge","scalpel"]]};
+	case "wongs": {["Wong's Food Cart",["turtlesoup","turtle","frog"]]};
 	case "coffee": {["Stratis Coffee Club",["coffee","donuts"]]};
-	case "heroin": {["Drug Dealer",["cocainep","heroinp","marijuana"]]};
+	case "heroin": {["Drug Dealer",["cocainep","heroinp","marijuana","frogp","crystalmeth","methu","ephedra","uraniumu","uraniump"]]};
 	case "oil": {["Oil Trader",["oilp","pickaxe","fuelF"]]};
 	case "fishmarket": {["Altis Fish Market",["salema","ornate","mackerel","mullet","tuna","catshark"]]};
 	case "glass": {["Altis Glass Dealer",["glass"]]};
@@ -25,5 +24,10 @@ switch (_shop) do
 	case "salt": {["Salt Dealer",["salt_r"]]};
 	case "cop": {["Cop Item Shop",["donuts","coffee","spikeStrip","water","rabbit","apple","redgull","fuelF","defusekit"]]};
 	case "cement": {["Cement Dealer",["cement"]]};
-	case "gold": {["Gold Buyer",["goldbar"]]};
+	case "brew": {["Moonshine Brewery",["moonshine","mashu"]]};
+	case "beer": {["Liqour Store",["wine"]]};
+	case "gang": {["Gang Market", ["water","rabbit","apple","redgull","tbacon","lockpick","pickaxe","fuelF","peach","blastingcharge","boltcutter"]]};
+	case "vigilante": {["Vigilante Shop", ["water","apple","peach","redgull","tbacon","ziptie"]]};
+	case "Prospector": {["Gold Ingot Dealer",["goldbarp"]]};
+	case "organ": {["Organ Dealer",["kidney"]]}; 
 };
